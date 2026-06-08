@@ -2138,6 +2138,11 @@ function buildCpPointNew(p, num) {
 }
 
 function renderCpPointsNew() {
+  var semMap = {
+    nmab: [1, 1, 2, 2],
+    jatidiri: [1, 1, 2, 1],
+    literasiSteam: [1, 1, 2, 2, 2, 2, 1]
+  };
   var levels = [
     {data: cpDataNewKb, suffix: 'new-kb'},
     {data: cpDataNewTka, suffix: 'new-tka'},
@@ -2148,17 +2153,35 @@ function renderCpPointsNew() {
     bidangKeys.forEach(function(bk) {
       var el = document.getElementById(bk + '-points-' + lv.suffix);
       if (el && lv.data[bk]) {
-        var html = '';
+        var cpGroups = [];
         var currentCp = '';
-        var num = 0;
         lv.data[bk].forEach(function(p) {
           if (p.subelemen !== currentCp) {
             currentCp = p.subelemen;
-            num = 0;
-            html += '<p style="font-size:.8rem;color:var(--muted);padding:8px 0 8px;font-style:italic;border-top:1px solid #eee;margin-top:4px">CP: ' + currentCp + '</p>';
+            cpGroups.push({cp: currentCp, points: []});
           }
-          num++;
-          html += buildCpPointNew(p, num);
+          cpGroups[cpGroups.length - 1].points.push(p);
+        });
+        var smap = semMap[bk];
+        cpGroups.forEach(function(g, i) { g.sem = (i < smap.length) ? smap[i] : 1; });
+        var html = '';
+        [1, 2].forEach(function(sem) {
+          var semGroups = cpGroups.filter(function(g) { return g.sem === sem; });
+          if (semGroups.length === 0) return;
+          var semLabel = sem === 1
+            ? 'Semester 1 &mdash; Tema 1: Identitas dalam Kristus &amp; Tema 2: Ekspresi Kreativitas Beriman'
+            : 'Semester 2 &mdash; Tema 3: Mengenal Dunia Milik Allah &amp; Tema 4: Pelayanan Terbaik di Dunia Milik Allah';
+          var semBg = sem === 1 ? '#fef5e7' : '#eaf4fb';
+          var semBorder = sem === 1 ? '#f39c12' : '#3498db';
+          html += '<div style="font-weight:600;font-size:.82rem;margin:' + (sem === 1 ? '0' : '20') + 'px 0 10px;padding:8px 12px;background:' + semBg + ';border-left:4px solid ' + semBorder + ';border-radius:0 6px 6px 0">' + semLabel + '</div>';
+          semGroups.forEach(function(g) {
+            html += '<p style="font-size:.8rem;color:var(--muted);padding:8px 0 8px;font-style:italic;border-top:1px solid #eee;margin-top:4px">CP: ' + g.cp + '</p>';
+            var num = 0;
+            g.points.forEach(function(p) {
+              num++;
+              html += buildCpPointNew(p, num);
+            });
+          });
         });
         el.innerHTML = html;
       }
