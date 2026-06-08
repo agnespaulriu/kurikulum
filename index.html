@@ -212,6 +212,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <div class="sidebar-section-title">Menu Utama</div>
     <a href="#" class="active" onclick="showSection('beranda',this)">🏠 Beranda</a>
     <a href="#" onclick="showSection('mapping',this)">📅 Mapping TWKA 2026-2027</a>
+    <a href="#" onclick="showSection('timeline',this)">📆 Timeline TA 2026-2027</a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Capaian Pembelajaran</div>
@@ -1553,6 +1554,251 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     </div>
     </div>
 
+  </div>
+</div>
+
+<!-- ====== TIMELINE ====== -->
+<div class="section" id="timeline">
+  <div class="page-title">
+    <h1>Timeline Kalender Akademik</h1>
+    <p>Sekolah Erenos KB-TK &middot; Tahun Ajaran 2026-2027 &middot; Sumber: Kaldik KB-TK Erenos</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;align-items:center;font-size:.78rem">
+    <span style="font-weight:600;margin-right:4px">Keterangan:</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:12px;height:12px;border-radius:50%;background:#f39c12;display:inline-block"></span> Kegiatan Siswa</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:12px;height:12px;border-radius:50%;background:#27ae60;display:inline-block"></span> Kegiatan Guru</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:12px;height:12px;border-radius:50%;background:#e74c3c;display:inline-block"></span> Libur Nasional</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:12px;height:12px;border-radius:50%;background:#3498db;display:inline-block"></span> Libur Sekolah</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:12px;height:12px;border-radius:50%;background:#9b59b6;display:inline-block"></span> Kegiatan Lain</span>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;text-align:center">
+      <div style="padding:12px;background:#f8f9fa;border-radius:8px">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--primary)">203</div>
+        <div style="font-size:.75rem;color:var(--muted)">Hari Efektif Siswa</div>
+      </div>
+      <div style="padding:12px;background:#f8f9fa;border-radius:8px">
+        <div style="font-size:1.4rem;font-weight:700;color:#27ae60">223</div>
+        <div style="font-size:.75rem;color:var(--muted)">Hari Efektif Guru</div>
+      </div>
+      <div style="padding:12px;background:#fef5e7;border-radius:8px">
+        <div style="font-size:1.4rem;font-weight:700;color:#f39c12">107 / 121</div>
+        <div style="font-size:.75rem;color:var(--muted)">Semester 1 (Siswa / Guru)</div>
+      </div>
+      <div style="padding:12px;background:#eaf4fb;border-radius:8px">
+        <div style="font-size:1.4rem;font-weight:700;color:#3498db">96 / 102</div>
+        <div style="font-size:.75rem;color:var(--muted)">Semester 2 (Siswa / Guru)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Semester 1 -->
+  <div style="font-weight:700;font-size:.9rem;margin:20px 0 12px;padding:10px 14px;background:#fef5e7;border-left:4px solid #f39c12;border-radius:0 8px 8px 0">
+    SEMESTER 1 &mdash; Juli &ndash; Desember 2026
+  </div>
+
+  <!-- Juli 2026 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Juli 2026</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 11 &middot; Guru 24</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">2-3</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Training Guru Baru</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">3</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Guru Masuk</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">6-8</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Retreat Guru &amp; Staf (&amp; KATA)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">11</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Parents Meeting KB-TK, Kls 1, 7, dan 10 (yg baru masuk/dr luar)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">13</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>KB-TK-SD, Kelas 7, 10: MPLS</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">14</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>MPLS SMP SMA</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">15-17</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>MPLS seluruh Erenos</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">17</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Kebaktian Awal Tahun</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">18</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Parents Meeting Yang Naik Kelas</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">24-25</span><span style="width:8px;height:8px;border-radius:50%;background:#9b59b6;margin-top:5px;flex-shrink:0"></span><span>Internal Open House</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">31</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Renang</span></div>
+    </div>
+  </div>
+
+  <!-- Agustus 2026 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Agustus 2026</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 20 &middot; Guru 21</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">10</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Awal Ekskul</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">12</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Outing Class: Dr Gigi (Medikids Klinik)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">15</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>External Open House - Early Bird</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">17</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Indonesia Independence Day</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">18-22</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Open House 2027-2028</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">22</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Erenos Run 2026</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">25</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Maulid Nabi Muhammad SAW</span></div>
+    </div>
+  </div>
+
+  <!-- September 2026 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">September 2026</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 22 &middot; Guru 22</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">9</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Cooking Class</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">25</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Fieldtrip: Pesona Alam</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">29</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Teachers and Staff Refreshment Day</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">30</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>KKR Sweety Kids</span></div>
+    </div>
+  </div>
+
+  <!-- Oktober 2026 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Oktober 2026</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 23 &middot; Guru 23</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">17</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Parents Teacher Conference</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">28</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Perayaan Bulan Bahasa</span></div>
+    </div>
+  </div>
+
+  <!-- November 2026 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">November 2026</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 21 &middot; Guru 21</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">12</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Outing Class: Laomian Class</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">23-27</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>SAS (Sumatif Akhir Semester)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">25</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Peringatan Hari Guru</span></div>
+    </div>
+  </div>
+
+  <!-- Desember 2026 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Desember 2026</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 10 &middot; Guru 10</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">4</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Students Christmas Celebration, and Teachers+Staff</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">11</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Report Card Semester 1</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">12</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Christmas Carol</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">14-31</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">First Semester &amp; Christmas Holiday (Student &amp; Teacher)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">25</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Hari Natal</span></div>
+    </div>
+  </div>
+
+  <!-- Semester 2 -->
+  <div style="font-weight:700;font-size:.9rem;margin:24px 0 12px;padding:10px 14px;background:#eaf4fb;border-left:4px solid #3498db;border-radius:0 8px 8px 0">
+    SEMESTER 2 &mdash; Januari &ndash; Juni 2027
+  </div>
+
+  <!-- Januari 2027 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Januari 2027</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 18 &middot; Guru 19</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">1</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Tahun Baru Masehi</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">2-4</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">First Semester &amp; Christmas Holiday (lanjutan)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">5</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Isra Mi&rsquo;raj Nabi Muhammad SAW</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">6</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Teachers Back to School</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">7</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Students Back to School</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">15</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Berenang</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">30</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Erenos Chinese Culture Festival (BXC / Sawangan)</span></div>
+    </div>
+  </div>
+
+  <!-- Februari 2027 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Februari 2027</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 18 &middot; Guru 18</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">5</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">Cuti Bersama Imlek</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">6</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Tahun Baru Imlek 2577</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">9</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Teachers &amp; Students Back to School</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">16</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Science Day</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">24</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Cooking Class</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">25-26</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Pra Raker (Dir + Kepsek)</span></div>
+    </div>
+  </div>
+
+  <!-- Maret 2027 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Maret 2027</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 11 &middot; Guru 13</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">8-9</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">Cuti Bersama Lebaran</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">10-11</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Idul Fitri</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">12-18</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">Cuti Bersama Lebaran (lanjutan)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">19</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Teacher Back to School (PD + Job Alike)</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">22</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Student Back to School</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">24</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Market Day</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">26</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Good Friday / Jumat Agung</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">28</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Paskah / Easter</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">30</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Teachers and Staff Refreshment Day</span></div>
+    </div>
+  </div>
+
+  <!-- April 2027 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">April 2027</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 22 &middot; Guru 22</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">2</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Student Passover</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">15-16</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Bible Camp &amp; Pajamas Day</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">29</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Outing Class: Pengenalan Transportasi (pesawat terbang / mobil pemadam kebakaran)</span></div>
+    </div>
+  </div>
+
+  <!-- Mei 2027 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Mei 2027</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 18 &middot; Guru 18</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">1</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Hari Buruh / May Day</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">6</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Kenaikan Yesus Kristus</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">7</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">Cuti Bersama Kenaikan Yesus Kristus</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">14</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Field Trip: Funtacia</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">17</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Idul Adha</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">20</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Hari Raya Waisak</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">24-28</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>PAT / ASAT</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">29</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Graduation SMA &amp; TK</span></div>
+    </div>
+  </div>
+
+  <!-- Juni 2027 -->
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Juni 2027</div>
+      <div style="font-size:.72rem;color:var(--muted)">Efektif: Siswa 9 &middot; Guru 12</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">1</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Hari Lahir Pancasila</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">5</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Graduation SD-SMP</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">6</span><span style="width:8px;height:8px;border-radius:50%;background:#e74c3c;margin-top:5px;flex-shrink:0"></span><span style="font-weight:500">Tahun Baru Hijriyah 1448 H</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">11</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>KTTA Guru &amp; Staf + Persiapan Report Card</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">12</span><span style="width:8px;height:8px;border-radius:50%;background:#f39c12;margin-top:5px;flex-shrink:0"></span><span>Final Report Card</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">14-15</span><span style="width:8px;height:8px;border-radius:50%;background:#27ae60;margin-top:5px;flex-shrink:0"></span><span>Raker Guru &amp; Staf, Siswa Libur</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:.8rem"><span style="min-width:40px;font-weight:600;color:var(--muted)">16-30</span><span style="width:8px;height:8px;border-radius:50%;background:#3498db;margin-top:5px;flex-shrink:0"></span><span style="color:#3498db">Second Semester Teacher Holiday</span></div>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-top:12px;font-size:.76rem">
+    <strong>Catatan:</strong> Minggu pertama setiap awal bulan: Rapat Koordinasi Direktur dan Kepala Sekolah. Standar JP Dinas = 38 minggu = 190 hari efektif.
+    Sumber: Kalender Akademik KB-TK Erenos TA 2026-2027.
   </div>
 </div>
 
