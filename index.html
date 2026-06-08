@@ -221,6 +221,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Capaian Pembelajaran NEW</div>
+    <a href="#" onclick="showSection('cp-new-overview',this)">📊 Overview</a>
     <a href="#" onclick="showSection('cp-new-kb',this)">📋 Breakdown CP NEW – KB</a>
     <a href="#" onclick="showSection('cp-new-tka',this)">📋 Breakdown CP NEW – TK A</a>
     <a href="#" onclick="showSection('cp-new-tkb',this)">📋 Breakdown CP NEW – TK B</a>
@@ -1004,14 +1005,15 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 </div>
 
 
-<!-- ====== CP NEW KB ====== -->
-<div class="section" id="cp-new-kb">
+
+<!-- ====== CP NEW OVERVIEW ====== -->
+<div class="section" id="cp-new-overview">
   <div class="page-title">
-    <h1>Breakdown CP NEW &mdash; KB</h1>
-    <p>Kelompok Bermain &middot; Dengan TP, ATP dan Indikator &middot; Fase Fondasi &middot; Sumber: Indikator Rapor 2025</p>
+    <h1>Overview Pemetaan CP per Semester</h1>
+    <p>Pemetaan Capaian Pembelajaran ke Semester 1 dan 2 &middot; Semua Jenjang &middot; Sumber: Indikator Rapor 2025</p>
   </div>
 
-  <div class="info-box">Klik judul setiap bidang pengembangan untuk membuka/menutup detail capaian.</div>
+  <div class="info-box">Pemetaan CP, TP, ATP, dan Indikator ke semester berdasarkan kesesuaian dengan tema pembelajaran. Semester 1 (Tema 1: Identitas dalam Kristus &amp; Tema 2: Ekspresi Kreativitas Beriman) dan Semester 2 (Tema 3: Mengenal Dunia Milik Allah &amp; Tema 4: Pelayanan Terbaik di Dunia Milik Allah).</div>
 
   <div class="card" style="margin-bottom:12px;padding:14px 18px">
     <div style="font-weight:600;font-size:.9rem;margin-bottom:4px">Overview Pemetaan CP per Semester &mdash; KB</div>
@@ -1150,44 +1152,6 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
       </div>
     </div>
   </div>
-
-  <div class="card">
-
-    <!-- 1. Nilai Agama dan Budi Pekerti -->
-    <div class="section-nmab">
-    <button class="collapsible open" onclick="toggleCollapsible(this)">1. Nilai Agama dan Budi Pekerti &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">8 poin</span></button>
-    <div class="collapsible-body open">
-      <div id="nmab-points-new-kb"></div>
-    </div>
-    </div>
-
-    <!-- 2. Jati Diri -->
-    <div class="section-jatidiri" style="margin-top:8px">
-    <button class="collapsible" onclick="toggleCollapsible(this)">2. Jati Diri &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">11 poin</span></button>
-    <div class="collapsible-body">
-      <div id="jatidiri-points-new-kb"></div>
-    </div>
-    </div>
-
-    <!-- 3. Literasi, STEAM -->
-    <div class="section-literasi" style="margin-top:8px">
-    <button class="collapsible" onclick="toggleCollapsible(this)">3. Literasi, STEAM &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">16 poin</span></button>
-    <div class="collapsible-body">
-      <div id="literasiSteam-points-new-kb"></div>
-    </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ====== CP NEW TKA ====== -->
-<div class="section" id="cp-new-tka">
-  <div class="page-title">
-    <h1>Breakdown CP NEW &mdash; TK A</h1>
-    <p>Taman Kanak-kanak A &middot; Dengan TP, ATP dan Indikator &middot; Fase Fondasi &middot; Sumber: Indikator Rapor 2025</p>
-  </div>
-
-  <div class="info-box">Klik judul setiap bidang pengembangan untuk membuka/menutup detail capaian.</div>
 
   <div class="card" style="margin-bottom:12px;padding:14px 18px">
     <div style="font-weight:600;font-size:.9rem;margin-bottom:4px">Overview Pemetaan CP per Semester &mdash; TK A</div>
@@ -1332,44 +1296,6 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     </div>
   </div>
 
-  <div class="card">
-
-    <!-- 1. Nilai Agama dan Budi Pekerti -->
-    <div class="section-nmab">
-    <button class="collapsible open" onclick="toggleCollapsible(this)">1. Nilai Agama dan Budi Pekerti &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">8 poin</span></button>
-    <div class="collapsible-body open">
-      <div id="nmab-points-new-tka"></div>
-    </div>
-    </div>
-
-    <!-- 2. Jati Diri -->
-    <div class="section-jatidiri" style="margin-top:8px">
-    <button class="collapsible" onclick="toggleCollapsible(this)">2. Jati Diri &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">11 poin</span></button>
-    <div class="collapsible-body">
-      <div id="jatidiri-points-new-tka"></div>
-    </div>
-    </div>
-
-    <!-- 3. Literasi, STEAM -->
-    <div class="section-literasi" style="margin-top:8px">
-    <button class="collapsible" onclick="toggleCollapsible(this)">3. Literasi, STEAM &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">21 poin</span></button>
-    <div class="collapsible-body">
-      <div id="literasiSteam-points-new-tka"></div>
-    </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ====== CP NEW TKB ====== -->
-<div class="section" id="cp-new-tkb">
-  <div class="page-title">
-    <h1>Breakdown CP NEW &mdash; TK B</h1>
-    <p>Taman Kanak-kanak B &middot; Dengan TP, ATP dan Indikator &middot; Fase Fondasi &middot; Sumber: Indikator Rapor 2025</p>
-  </div>
-
-  <div class="info-box">Klik judul setiap bidang pengembangan untuk membuka/menutup detail capaian.</div>
-
   <div class="card" style="margin-bottom:12px;padding:14px 18px">
     <div style="font-weight:600;font-size:.9rem;margin-bottom:4px">Overview Pemetaan CP per Semester &mdash; TK B</div>
     <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Pemetaan 41 TP ke Semester 1 (21 TP) dan Semester 2 (20 TP) berdasarkan kesesuaian tema pembelajaran.</div>
@@ -1513,6 +1439,93 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
       </div>
     </div>
   </div>
+
+</div>
+
+<!-- ====== CP NEW KB ====== -->
+<div class="section" id="cp-new-kb">
+  <div class="page-title">
+    <h1>Breakdown CP NEW &mdash; KB</h1>
+    <p>Kelompok Bermain &middot; Dengan TP, ATP dan Indikator &middot; Fase Fondasi &middot; Sumber: Indikator Rapor 2025</p>
+  </div>
+
+  <div class="info-box">Klik judul setiap bidang pengembangan untuk membuka/menutup detail capaian.</div>
+
+  <div class="card">
+
+    <!-- 1. Nilai Agama dan Budi Pekerti -->
+    <div class="section-nmab">
+    <button class="collapsible open" onclick="toggleCollapsible(this)">1. Nilai Agama dan Budi Pekerti &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">8 poin</span></button>
+    <div class="collapsible-body open">
+      <div id="nmab-points-new-kb"></div>
+    </div>
+    </div>
+
+    <!-- 2. Jati Diri -->
+    <div class="section-jatidiri" style="margin-top:8px">
+    <button class="collapsible" onclick="toggleCollapsible(this)">2. Jati Diri &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">11 poin</span></button>
+    <div class="collapsible-body">
+      <div id="jatidiri-points-new-kb"></div>
+    </div>
+    </div>
+
+    <!-- 3. Literasi, STEAM -->
+    <div class="section-literasi" style="margin-top:8px">
+    <button class="collapsible" onclick="toggleCollapsible(this)">3. Literasi, STEAM &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">16 poin</span></button>
+    <div class="collapsible-body">
+      <div id="literasiSteam-points-new-kb"></div>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====== CP NEW TKA ====== -->
+<div class="section" id="cp-new-tka">
+  <div class="page-title">
+    <h1>Breakdown CP NEW &mdash; TK A</h1>
+    <p>Taman Kanak-kanak A &middot; Dengan TP, ATP dan Indikator &middot; Fase Fondasi &middot; Sumber: Indikator Rapor 2025</p>
+  </div>
+
+  <div class="info-box">Klik judul setiap bidang pengembangan untuk membuka/menutup detail capaian.</div>
+
+  <div class="card">
+
+    <!-- 1. Nilai Agama dan Budi Pekerti -->
+    <div class="section-nmab">
+    <button class="collapsible open" onclick="toggleCollapsible(this)">1. Nilai Agama dan Budi Pekerti &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">8 poin</span></button>
+    <div class="collapsible-body open">
+      <div id="nmab-points-new-tka"></div>
+    </div>
+    </div>
+
+    <!-- 2. Jati Diri -->
+    <div class="section-jatidiri" style="margin-top:8px">
+    <button class="collapsible" onclick="toggleCollapsible(this)">2. Jati Diri &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">11 poin</span></button>
+    <div class="collapsible-body">
+      <div id="jatidiri-points-new-tka"></div>
+    </div>
+    </div>
+
+    <!-- 3. Literasi, STEAM -->
+    <div class="section-literasi" style="margin-top:8px">
+    <button class="collapsible" onclick="toggleCollapsible(this)">3. Literasi, STEAM &nbsp;<span style="color:var(--muted);font-size:.78rem;font-weight:400">21 poin</span></button>
+    <div class="collapsible-body">
+      <div id="literasiSteam-points-new-tka"></div>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====== CP NEW TKB ====== -->
+<div class="section" id="cp-new-tkb">
+  <div class="page-title">
+    <h1>Breakdown CP NEW &mdash; TK B</h1>
+    <p>Taman Kanak-kanak B &middot; Dengan TP, ATP dan Indikator &middot; Fase Fondasi &middot; Sumber: Indikator Rapor 2025</p>
+  </div>
+
+  <div class="info-box">Klik judul setiap bidang pengembangan untuk membuka/menutup detail capaian.</div>
 
   <div class="card">
 
