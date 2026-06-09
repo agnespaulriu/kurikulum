@@ -2577,7 +2577,7 @@ function renderOverviewGraph() {
           var itemNum = 0;
           g.points.forEach(function(p) {
             itemNum++;
-            var num = g.cpNum + '.' + itemNum;
+            var num = g.cpNum + '.' + itemNum + '.';
             html += '<div class="tree-node">';
             html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
             html += '<div class="tree-children collapsed">';
