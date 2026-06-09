@@ -258,7 +258,6 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <div class="sidebar-section-title">Capaian Pembelajaran NEW</div>
     <a href="#" onclick="showSection('cp-new-overview',this)">📊 Overview</a>
     <a href="#" onclick="showSection('cp-new-graph',this)">🗺️ Overview Graph</a>
-    <a href="#" onclick="showSection('cp-new-graph-test',this)">🧪 Overview Graph Test</a>
     <a href="#" onclick="showSection('cp-new-kb',this)">📋 Breakdown CP NEW – KB</a>
     <a href="#" onclick="showSection('cp-new-tka',this)">📋 Breakdown CP NEW – TK A</a>
     <a href="#" onclick="showSection('cp-new-tkb',this)">📋 Breakdown CP NEW – TK B</a>
@@ -1484,11 +1483,11 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <div class="section" id="cp-new-graph">
   <div class="page-title">
     <h1>Overview Graph</h1>
-    <p>Visualisasi interaktif Capaian Pembelajaran NEW &middot; Klik node untuk expand/collapse</p>
+    <p>Visualisasi interaktif: Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &rsaquo; TP &rsaquo; ATP</p>
   </div>
-  <div class="info-box">Klik pada setiap node untuk membuka atau menutup detailnya. Gunakan tombol <strong>Expand All</strong> / <strong>Collapse All</strong> untuk kontrol cepat.</div>
+  <div class="info-box">Klik pada setiap node untuk membuka atau menutup detailnya. Badge warna menunjukkan bidang: <span style="display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600;color:#fff;background:#e74c3c">NMAB</span> <span style="display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600;color:#fff;background:#2980b9">Jati Diri</span> <span style="display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600;color:#fff;background:#27ae60">Lit. STEAM</span></div>
   <div class="card">
-    <div class="graph-tabs">
+    <div class="graph-tabs" id="graph-tabs">
       <button class="graph-tab active" onclick="switchGraphTab('kb',this)">KB</button>
       <button class="graph-tab" onclick="switchGraphTab('tka',this)">TK A</button>
       <button class="graph-tab" onclick="switchGraphTab('tkb',this)">TK B</button>
@@ -1501,37 +1500,17 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <div class="graph-panel" id="graph-tka"></div>
     <div class="graph-panel" id="graph-tkb"></div>
   </div>
-</div>
-
-<!-- ====== OVERVIEW GRAPH TEST ====== -->
-<div class="section" id="cp-new-graph-test">
-  <div class="page-title">
-    <h1>Overview Graph Test</h1>
-    <p>Visualisasi interaktif Capaian Pembelajaran NEW &middot; Klik node untuk expand/collapse</p>
-  </div>
-  <div class="info-box">Klik pada setiap node untuk membuka atau menutup detailnya. Gunakan tombol <strong>Expand All</strong> / <strong>Collapse All</strong> untuk kontrol cepat.</div>
-  <div class="card">
-    <div class="graph-tabs" id="graph-test-tabs">
-      <button class="graph-tab active" onclick="switchGraphTabTest('kb',this)">KB</button>
-      <button class="graph-tab" onclick="switchGraphTabTest('tka',this)">TK A</button>
-      <button class="graph-tab" onclick="switchGraphTabTest('tkb',this)">TK B</button>
-    </div>
-    <div style="margin-bottom:12px;display:flex;gap:8px">
-      <button onclick="graphExpandAllTest()" style="padding:4px 12px;font-size:.75rem;border:1px solid #ddd;border-radius:4px;background:#f8f9fa;cursor:pointer">Expand All</button>
-      <button onclick="graphCollapseAllTest()" style="padding:4px 12px;font-size:.75rem;border:1px solid #ddd;border-radius:4px;background:#f8f9fa;cursor:pointer">Collapse All</button>
-    </div>
-    <div class="graph-panel active" id="graph-test-kb"></div>
-    <div class="graph-panel" id="graph-test-tka"></div>
-    <div class="graph-panel" id="graph-test-tkb"></div>
-  </div>
 
   <div class="card" style="margin-top:12px;padding:14px 18px;background:#fffbf0;border-left:4px solid #f39c12">
     <div style="font-weight:600;font-size:.85rem;margin-bottom:8px">Catatan Sebaran</div>
     <div style="font-size:.78rem;color:var(--text);margin-bottom:8px">
-      <strong>Lookup data (Breakdown CP):</strong> Semua item dari ketiga bidang (NMAB, Jati Diri, Literasi STEAM) di setiap jenjang dan semester telah tersebar 100% ke dalam sub topik. Tidak ada item yang hilang atau terduplikasi.
+      <strong>Urutan graph:</strong> Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &rsaquo; TP &rsaquo; ATP
+    </div>
+    <div style="font-size:.78rem;color:var(--text);margin-bottom:8px">
+      <strong>Sebaran data:</strong> Semua Breakdown CP dari ketiga bidang (NMAB, Jati Diri, Literasi STEAM) di setiap jenjang dan semester telah tersebar 100% ke dalam struktur Tema &rsaquo; Topik &rsaquo; Sub Topik. Di bawah setiap Sub Topik, item dikelompokkan per Bidang, lalu per CP (Subelemen). Tidak ada item yang hilang atau terduplikasi.
     </div>
     <div style="font-size:.78rem;color:var(--text);margin-bottom:6px">
-      <strong>Sub topik yang kosong</strong> (tidak memiliki Breakdown CP dari bidang manapun, sehingga tidak ditampilkan di graph):
+      <strong>Sub Topik yang kosong</strong> (tidak memiliki Breakdown CP dari bidang manapun, sehingga tidak ditampilkan di graph):
     </div>
     <table style="width:100%;font-size:.75rem;border-collapse:collapse;margin-bottom:8px">
       <tr style="background:#f5f0e0"><th style="text-align:left;padding:4px 8px;border:1px solid #e5d9b8">Jenjang</th><th style="text-align:left;padding:4px 8px;border:1px solid #e5d9b8">Lokasi</th><th style="text-align:left;padding:4px 8px;border:1px solid #e5d9b8">Sub Topik Kosong</th></tr>
@@ -2538,9 +2517,10 @@ function renderCpPointsNew() {
 
 // ===== OVERVIEW GRAPH =====
 function switchGraphTab(tab, btn) {
-  document.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); });
-  document.querySelectorAll('.graph-panel').forEach(function(p){ p.classList.remove('active'); });
+  var tabs = document.getElementById('graph-tabs');
+  tabs.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); });
   btn.classList.add('active');
+  document.querySelectorAll('[id^="graph-k"],[id^="graph-t"]').forEach(function(p){ p.classList.remove('active'); });
   document.getElementById('graph-' + tab).classList.add('active');
 }
 function toggleGraphNode(el) {
@@ -2557,116 +2537,18 @@ function toggleGraphNode(el) {
   }
 }
 function graphExpandAll() {
-  var panel = document.querySelector('.graph-panel.active');
+  var panel = document.querySelector('#cp-new-graph .graph-panel.active');
   if (!panel) return;
   panel.querySelectorAll('.tree-children.collapsed').forEach(function(c){ c.classList.remove('collapsed'); });
   panel.querySelectorAll('.tree-label.collapsed').forEach(function(l){ l.classList.remove('collapsed'); });
 }
 function graphCollapseAll() {
-  var panel = document.querySelector('.graph-panel.active');
+  var panel = document.querySelector('#cp-new-graph .graph-panel.active');
   if (!panel) return;
   panel.querySelectorAll('.tree-children').forEach(function(c){ c.classList.add('collapsed'); });
   panel.querySelectorAll('.tree-label').forEach(function(l){ l.classList.add('collapsed'); });
 }
-function renderOverviewGraph() {
-  var semMap = {
-    nmab: [1, 1, 2, 2],
-    jatidiri: [1, 1, 2, 1],
-    literasiSteam: [1, 1, 2, 2, 2, 2, 1]
-  };
-  var bidangNames = {nmab:'Nilai Agama & Budi Pekerti', jatidiri:'Jati Diri', literasiSteam:'Literasi, STEAM'};
-  var bidangClass = {nmab:'bidang-nmab', jatidiri:'bidang-jatidiri', literasiSteam:'bidang-litsteam'};
-  var bidangDot = {nmab:'#e74c3c', jatidiri:'#2980b9', literasiSteam:'#27ae60'};
-  var levels = [
-    {data: cpDataNewKb, target: 'graph-kb', label: 'KB'},
-    {data: cpDataNewTka, target: 'graph-tka', label: 'TK A'},
-    {data: cpDataNewTkb, target: 'graph-tkb', label: 'TK B'}
-  ];
-  var bidangKeys = ['nmab', 'jatidiri', 'literasiSteam'];
-  levels.forEach(function(lv) {
-    var html = '<div class="tree-root">';
-    html += '<div class="tree-label jenjang-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + lv.label + '</span></div>';
-    html += '<div class="tree-children">';
-    [1, 2].forEach(function(sem) {
-      html += '<div class="tree-node">';
-      html += '<div class="tree-label sem-node s' + sem + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">Semester ' + sem + '</span></div>';
-      html += '<div class="tree-children">';
-      bidangKeys.forEach(function(bk) {
-        if (!lv.data[bk]) return;
-        var cpGroups = [];
-        var currentCp = '';
-        lv.data[bk].forEach(function(p) {
-          if (p.subelemen !== currentCp) {
-            currentCp = p.subelemen;
-            cpGroups.push({cp: currentCp, points: []});
-          }
-          cpGroups[cpGroups.length - 1].points.push(p);
-        });
-        var smap = semMap[bk];
-        cpGroups.forEach(function(g, i) { g.sem = (i < smap.length) ? smap[i] : 1; g.cpNum = i + 1; });
-        var semGroups = cpGroups.filter(function(g) { return g.sem === sem; });
-        if (semGroups.length === 0) return;
-        var totalPoints = 0;
-        semGroups.forEach(function(g){ totalPoints += g.points.length; });
-        html += '<div class="tree-node">';
-        html += '<div class="tree-label ' + bidangClass[bk] + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + bidangNames[bk] + '</span><span class="badge">' + totalPoints + ' item</span></div>';
-        html += '<div class="tree-children collapsed">';
-        semGroups.forEach(function(g) {
-          html += '<div class="tree-node">';
-          var cpShort = g.cp.length > 60 ? g.cp.substring(0, 60) + '…' : g.cp;
-          html += '<div class="tree-label cp-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">CP ' + g.cpNum + ': ' + cpShort + '</span><span class="badge">' + g.points.length + '</span></div>';
-          html += '<div class="tree-children collapsed">';
-          var itemNum = 0;
-          g.points.forEach(function(p) {
-            itemNum++;
-            var num = g.cpNum + '.' + itemNum + '.';
-            html += '<div class="tree-node">';
-            html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
-            html += '<div class="tree-children collapsed">';
-            if (p.atp.length > 0) {
-              p.atp.forEach(function(a) {
-                html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:' + bidangDot[bk] + '"></span>TP: ' + a + '</div></div>';
-              });
-            }
-            if (p.indikator.length > 0) {
-              p.indikator.forEach(function(ind) {
-                html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:#999"></span>ATP: ' + ind + '</div></div>';
-              });
-            }
-            html += '</div></div>';
-          });
-          html += '</div></div>';
-        });
-        html += '</div></div>';
-      });
-      html += '</div></div>';
-    });
-    html += '</div></div>';
-    document.getElementById(lv.target).innerHTML = html;
-  });
-}
-
-// ===== OVERVIEW GRAPH TEST =====
-function switchGraphTabTest(tab, btn) {
-  var tabs = document.getElementById('graph-test-tabs');
-  tabs.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); });
-  btn.classList.add('active');
-  document.querySelectorAll('[id^="graph-test-k"],[id^="graph-test-t"]').forEach(function(p){ p.classList.remove('active'); });
-  document.getElementById('graph-test-' + tab).classList.add('active');
-}
-function graphExpandAllTest() {
-  var panel = document.querySelector('#cp-new-graph-test .graph-panel.active');
-  if (!panel) return;
-  panel.querySelectorAll('.tree-children.collapsed').forEach(function(c){ c.classList.remove('collapsed'); });
-  panel.querySelectorAll('.tree-label.collapsed').forEach(function(l){ l.classList.remove('collapsed'); });
-}
-function graphCollapseAllTest() {
-  var panel = document.querySelector('#cp-new-graph-test .graph-panel.active');
-  if (!panel) return;
-  panel.querySelectorAll('.tree-children').forEach(function(c){ c.classList.add('collapsed'); });
-  panel.querySelectorAll('.tree-label').forEach(function(l){ l.classList.add('collapsed'); });
-}
-var graphTestTopics = {
+var graphTopics = {
   kb: [
     { sem: 1, temas: [
       { tema: 'Identitas dalam Kristus', topik: 'Aku Ciptaan Tuhan yang Hebat', subs: [
@@ -2758,71 +2640,87 @@ var graphTestTopics = {
     ]}
   ]
 };
-function renderOverviewGraphTest() {
+function renderOverviewGraph() {
   var bidangNames = {nmab:'Nilai Agama & Budi Pekerti', jatidiri:'Jati Diri', literasiSteam:'Literasi, STEAM'};
   var bidangClass = {nmab:'bidang-nmab', jatidiri:'bidang-jatidiri', literasiSteam:'bidang-litsteam'};
   var bidangDot = {nmab:'#e74c3c', jatidiri:'#2980b9', literasiSteam:'#27ae60'};
   var bidangKeys = ['nmab', 'jatidiri', 'literasiSteam'];
   var dataSources = {kb: cpDataNewKb, tka: cpDataNewTka, tkb: cpDataNewTkb};
-  var targets = {kb:'graph-test-kb', tka:'graph-test-tka', tkb:'graph-test-tkb'};
+  var targets = {kb:'graph-kb', tka:'graph-tka', tkb:'graph-tkb'};
   var labels = {kb:'KB', tka:'TK A', tkb:'TK B'};
   ['kb','tka','tkb'].forEach(function(jenjang) {
     var data = dataSources[jenjang];
-    var topics = graphTestTopics[jenjang];
+    var topics = graphTopics[jenjang];
     var lookup = {};
     bidangKeys.forEach(function(bk) {
       lookup[bk] = {};
       if (!data[bk]) return;
-      var cpNum = 0; var currentSub = '';
-      var itemNum = 0;
+      var cpNum = 0; var currentSub = ''; var itemNum = 0;
       data[bk].forEach(function(p) {
         if (p.subelemen !== currentSub) { currentSub = p.subelemen; cpNum++; itemNum = 0; }
         itemNum++;
-        lookup[bk][p.id] = {cpNum: cpNum, itemNum: itemNum, item: p};
+        lookup[bk][p.id] = {cpNum: cpNum, itemNum: itemNum, item: p, subelemen: p.subelemen};
       });
     });
     var html = '<div class="tree-root">';
     html += '<div class="tree-label jenjang-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + labels[jenjang] + '</span></div>';
     html += '<div class="tree-children">';
     topics.forEach(function(semData) {
+      var semTotal = 0;
+      semData.temas.forEach(function(t) { t.subs.forEach(function(s) { bidangKeys.forEach(function(bk) { semTotal += (s.items[bk]||[]).length; }); }); });
       html += '<div class="tree-node">';
-      html += '<div class="tree-label sem-node s' + semData.sem + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">Semester ' + semData.sem + '</span></div>';
+      html += '<div class="tree-label sem-node s' + semData.sem + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">Semester ' + semData.sem + '</span><span class="badge">' + semTotal + '</span></div>';
       html += '<div class="tree-children">';
-      bidangKeys.forEach(function(bk) {
-        var totalItems = 0;
-        semData.temas.forEach(function(t) { t.subs.forEach(function(s) { if (s.items[bk]) totalItems += s.items[bk].length; }); });
-        if (totalItems === 0) return;
+      semData.temas.forEach(function(t, ti) {
+        var temaTotal = 0;
+        t.subs.forEach(function(s) { bidangKeys.forEach(function(bk) { temaTotal += (s.items[bk]||[]).length; }); });
+        var temaNum = (semData.sem - 1) * 2 + ti + 1;
         html += '<div class="tree-node">';
-        html += '<div class="tree-label ' + bidangClass[bk] + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + bidangNames[bk] + '</span><span class="badge">' + totalItems + ' item</span></div>';
+        html += '<div class="tree-label" style="background:#f5f0ff;border:1px solid #d9c9f5" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>Tema ' + temaNum + ':</strong> ' + t.tema + '</span><span class="badge">' + temaTotal + '</span></div>';
         html += '<div class="tree-children collapsed">';
-        semData.temas.forEach(function(t, ti) {
-          var temaItems = 0;
-          t.subs.forEach(function(s) { if (s.items[bk]) temaItems += s.items[bk].length; });
-          if (temaItems === 0) return;
-          var temaNum = (semData.sem - 1) * 2 + ti + 1;
+        html += '<div class="tree-node">';
+        html += '<div class="tree-label" style="background:#f0f5ff;border:1px solid #c9d5f5" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>Topik:</strong> ' + t.topik + '</span><span class="badge">' + temaTotal + '</span></div>';
+        html += '<div class="tree-children">';
+        t.subs.forEach(function(s, si) {
+          var subTotal = 0;
+          bidangKeys.forEach(function(bk) { subTotal += (s.items[bk]||[]).length; });
+          if (subTotal === 0) return;
           html += '<div class="tree-node">';
-          html += '<div class="tree-label" style="background:#f5f0ff;border:1px solid #d9c9f5" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>Tema ' + temaNum + ':</strong> ' + t.tema + '</span><span class="badge">' + temaItems + '</span></div>';
+          html += '<div class="tree-label" style="background:#f9fafb;border:1px solid #e5e7eb" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + (si + 1) + '. ' + s.name + '</span><span class="badge">' + subTotal + '</span></div>';
           html += '<div class="tree-children collapsed">';
-          html += '<div style="padding:4px 8px 4px 22px;font-size:.76rem;color:var(--muted);font-style:italic">Topik: «' + t.topik + '»</div>';
-          t.subs.forEach(function(s, si) {
-            var subItems = s.items[bk] || [];
-            if (subItems.length === 0) return;
+          bidangKeys.forEach(function(bk) {
+            var ids = s.items[bk] || [];
+            if (ids.length === 0) return;
             html += '<div class="tree-node">';
-            html += '<div class="tree-label" style="background:#f9fafb;border:1px solid #e5e7eb" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + (si + 1) + '. ' + s.name + '</span><span class="badge">' + subItems.length + '</span></div>';
+            html += '<div class="tree-label ' + bidangClass[bk] + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + bidangNames[bk] + '</span><span class="badge">' + ids.length + '</span></div>';
             html += '<div class="tree-children collapsed">';
-            subItems.forEach(function(itemId) {
-              var info = lookup[bk][itemId];
+            var cpGroups = {};
+            ids.forEach(function(id) {
+              var info = lookup[bk][id];
               if (!info) return;
-              var num = info.cpNum + '.' + info.itemNum + '.';
-              var p = info.item;
+              var key = info.cpNum;
+              if (!cpGroups[key]) cpGroups[key] = {cpNum: info.cpNum, subelemen: info.subelemen, items: []};
+              cpGroups[key].items.push(info);
+            });
+            Object.keys(cpGroups).sort(function(a,b){return a-b;}).forEach(function(k) {
+              var cpg = cpGroups[k];
+              var cpLabel = cpg.subelemen.length > 80 ? cpg.subelemen.substring(0, 80) + '…' : cpg.subelemen;
               html += '<div class="tree-node">';
-              html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
+              html += '<div class="tree-label cp-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">CP ' + cpg.cpNum + ': ' + cpLabel + '</span><span class="badge">' + cpg.items.length + '</span></div>';
               html += '<div class="tree-children collapsed">';
-              p.atp.forEach(function(a) {
-                html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:' + bidangDot[bk] + '"></span>TP: ' + a + '</div></div>';
-              });
-              p.indikator.forEach(function(ind) {
-                html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:#999"></span>ATP: ' + ind + '</div></div>';
+              cpg.items.forEach(function(info) {
+                var num = info.cpNum + '.' + info.itemNum + '.';
+                var p = info.item;
+                html += '<div class="tree-node">';
+                html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
+                html += '<div class="tree-children collapsed">';
+                p.atp.forEach(function(a) {
+                  html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:' + bidangDot[bk] + '"></span>TP: ' + a + '</div></div>';
+                });
+                p.indikator.forEach(function(ind) {
+                  html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:#999"></span>ATP: ' + ind + '</div></div>';
+                });
+                html += '</div></div>';
               });
               html += '</div></div>';
             });
@@ -2830,6 +2728,7 @@ function renderOverviewGraphTest() {
           });
           html += '</div></div>';
         });
+        html += '</div></div>';
         html += '</div></div>';
       });
       html += '</div></div>';
@@ -2844,7 +2743,6 @@ document.addEventListener('DOMContentLoaded', function() {
   renderCpPoints();
   renderCpPointsNew();
   renderOverviewGraph();
-  renderOverviewGraphTest();
   initSubtemaCfrr();
 });
 </script>
