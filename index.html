@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kurikulum KB-TK Sekolah Erenos 2026-2027</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -226,6 +227,9 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 .bidang-litsteam{background:#edf7ed;border:1px solid #b8dfb8}
 .cp-node{background:#fff;border:1px solid #e8e8e8}
 .jenjang-node{background:var(--primary);color:#fff}
+.save-pdf-btn{padding:7px 18px;font-size:.78rem;font-weight:600;border:1px solid #3498db;border-radius:5px;background:#3498db;color:#fff;cursor:pointer;transition:background .2s,opacity .2s;display:inline-flex;align-items:center;gap:6px}
+.save-pdf-btn:hover{background:#2980b9}
+.save-pdf-btn:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
 <body>
@@ -1627,12 +1631,98 @@ function renderOverviewGraph() {
   });
 }
 
+// ===== SAVE AS PDF =====
+function saveAsPdf(sectionId) {
+  var section = document.getElementById(sectionId);
+  if (!section) return;
+  var btn = section.querySelector('.save-pdf-btn');
+  var origHTML = btn ? btn.innerHTML : '';
+  if (btn) { btn.innerHTML = '⏳ Generating PDF...'; btn.disabled = true; }
+  var h1 = section.querySelector('h1');
+  var title = h1 ? h1.textContent.trim() : 'Document';
+  var filename = 'Erenos_' + title.replace(/[^a-zA-Z0-9\s\-–—]/g, '').trim().replace(/\s+/g, '_') + '.pdf';
+
+  var graphActiveTab = '';
+  if (sectionId === 'cp-new-graph') {
+    var activeBtn = section.querySelector('.graph-tab.active');
+    if (activeBtn) graphActiveTab = activeBtn.textContent.trim();
+  }
+
+  html2pdf().set({
+    margin: [12, 12, 15, 12],
+    filename: filename,
+    image: { type: 'jpeg', quality: 0.95 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      onclone: function(clonedDoc) {
+        var sidebar = clonedDoc.querySelector('.sidebar');
+        if (sidebar) sidebar.style.display = 'none';
+        var layout = clonedDoc.querySelector('.layout');
+        if (layout) layout.style.display = 'block';
+        var main = clonedDoc.querySelector('.main');
+        if (main) { main.style.marginLeft = '0'; main.style.padding = '20px'; main.style.maxWidth = '100%'; }
+        var el = clonedDoc.getElementById(sectionId);
+        if (!el) return;
+        el.style.display = 'block';
+        el.querySelectorAll('.save-pdf-btn').forEach(function(b) {
+          var p = b.parentNode; b.remove();
+          if (p && p.children.length === 0 && p.tagName === 'DIV') p.remove();
+        });
+        el.querySelectorAll('.graph-tabs').forEach(function(t) { t.remove(); });
+        el.querySelectorAll('button').forEach(function(b) {
+          if (/Expand|Collapse/.test(b.textContent)) {
+            var p = b.parentNode; b.remove();
+            if (p && p.children.length === 0 && p.tagName === 'DIV') p.remove();
+          }
+        });
+        if (sectionId === 'cp-new-graph' && graphActiveTab) {
+          var card = el.querySelector('.card');
+          if (card) {
+            var lbl = clonedDoc.createElement('div');
+            lbl.style.cssText = 'font-weight:700;font-size:.85rem;margin-bottom:12px;padding:6px 14px;background:#f0f4ff;border-radius:5px;display:inline-block;border:1px solid #d0d8e8';
+            lbl.textContent = 'Jenjang: ' + graphActiveTab;
+            card.insertBefore(lbl, card.firstChild);
+          }
+        }
+        el.querySelectorAll('.info-box').forEach(function(ib) { ib.remove(); });
+        var footer = clonedDoc.createElement('div');
+        footer.style.cssText = 'margin-top:20px;padding-top:10px;border-top:1px solid #ddd;font-size:.7rem;color:#999;text-align:center';
+        footer.textContent = 'Sekolah Erenos KB-TK · Kurikulum TP 2026-2027 · kurikulumkbtk-erenos.agnespaulriu.web.id';
+        el.appendChild(footer);
+      }
+    },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+  }).from(section).save().then(function() {
+    if (btn) { btn.innerHTML = origHTML; btn.disabled = false; }
+  }).catch(function(err) {
+    if (btn) { btn.innerHTML = origHTML; btn.disabled = false; }
+    alert('Gagal membuat PDF: ' + err.message);
+  });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
   renderOverviewNew();
   renderCpPointsNew();
   renderOverviewGraph();
   initSubtemaCfrr();
+  ['cp-new-overview','cp-new-graph','cp-new-kb','cp-new-tka','cp-new-tkb'].forEach(function(id) {
+    var section = document.getElementById(id);
+    if (!section) return;
+    var pageTitle = section.querySelector('.page-title');
+    if (!pageTitle) return;
+    var btnDiv = document.createElement('div');
+    btnDiv.style.cssText = 'margin:0 0 14px';
+    var btn = document.createElement('button');
+    btn.className = 'save-pdf-btn';
+    btn.innerHTML = '📄 Save as PDF';
+    btn.onclick = function() { saveAsPdf(id); };
+    btnDiv.appendChild(btn);
+    pageTitle.parentNode.insertBefore(btnDiv, pageTitle.nextSibling);
+  });
 });
 </script>
 </body>
