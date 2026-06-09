@@ -192,6 +192,40 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 .subtema-cfrr{display:none;margin-top:8px}
 .subtema-item.open .subtema-cfrr{display:block}
 .subtema-cfrr .cfrr-block{grid-template-columns:1fr;gap:6px}
+.graph-tabs{display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid #e0e0e0}
+.graph-tab{padding:8px 20px;font-size:.82rem;font-weight:600;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.graph-tab:hover{color:var(--text)}
+.graph-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.graph-panel{display:none}
+.graph-panel.active{display:block}
+.tree-node{position:relative;padding-left:22px}
+.tree-node::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:#e0e0e0}
+.tree-node:last-child::before{bottom:50%}
+.tree-node>.tree-label::before{content:'';position:absolute;left:-13px;top:50%;width:13px;height:2px;background:#e0e0e0}
+.tree-root{padding-left:0}
+.tree-root::before,.tree-root>.tree-label::before{display:none}
+.tree-label{position:relative;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;margin:3px 0;border-radius:8px;font-size:.8rem;cursor:pointer;user-select:none;transition:all .15s;max-width:100%}
+.tree-label:hover{filter:brightness(0.95)}
+.tree-label .toggle{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;flex-shrink:0;transition:transform .2s;background:rgba(0,0,0,.08);color:#555}
+.tree-label.collapsed .toggle{transform:rotate(-90deg)}
+.tree-label .badge{font-size:.65rem;padding:1px 6px;border-radius:10px;background:rgba(0,0,0,.08);color:inherit;flex-shrink:0}
+.tree-label .lbl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.tree-children{overflow:hidden;transition:max-height .3s ease,opacity .2s ease;max-height:2000px;opacity:1}
+.tree-children.collapsed{max-height:0;opacity:0}
+.tree-leaf{position:relative;padding-left:22px;padding-top:2px;padding-bottom:2px;font-size:.76rem;color:var(--text)}
+.tree-leaf::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:#e0e0e0}
+.tree-leaf:last-child::before{bottom:50%}
+.tree-leaf::after{content:'';position:absolute;left:9px;top:50%;width:10px;height:2px;background:#e0e0e0}
+.tree-leaf .leaf-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;flex-shrink:0}
+.tree-leaf-inner{padding:3px 0 3px 20px;display:flex;align-items:flex-start}
+.sem-node{background:#f8f9fa;border:1px solid #e0e0e0}
+.sem-node.s1{border-left:3px solid #f39c12}
+.sem-node.s2{border-left:3px solid #3498db}
+.bidang-nmab{background:#fdf0f0;border:1px solid #f5c6c6}
+.bidang-jatidiri{background:#edf4fb;border:1px solid #bdd4ee}
+.bidang-litsteam{background:#edf7ed;border:1px solid #b8dfb8}
+.cp-node{background:#fff;border:1px solid #e8e8e8}
+.jenjang-node{background:var(--primary);color:#fff}
 </style>
 </head>
 <body>
@@ -223,6 +257,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
   <div class="sidebar-section">
     <div class="sidebar-section-title">Capaian Pembelajaran NEW</div>
     <a href="#" onclick="showSection('cp-new-overview',this)">📊 Overview</a>
+    <a href="#" onclick="showSection('cp-new-graph',this)">🗺️ Overview Graph</a>
     <a href="#" onclick="showSection('cp-new-kb',this)">📋 Breakdown CP NEW – KB</a>
     <a href="#" onclick="showSection('cp-new-tka',this)">📋 Breakdown CP NEW – TK A</a>
     <a href="#" onclick="showSection('cp-new-tkb',this)">📋 Breakdown CP NEW – TK B</a>
@@ -1444,6 +1479,29 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 
 </div>
 
+<!-- ====== OVERVIEW GRAPH ====== -->
+<div class="section" id="cp-new-graph">
+  <div class="page-title">
+    <h1>Overview Graph</h1>
+    <p>Visualisasi interaktif Capaian Pembelajaran NEW &middot; Klik node untuk expand/collapse</p>
+  </div>
+  <div class="info-box">Klik pada setiap node untuk membuka atau menutup detailnya. Gunakan tombol <strong>Expand All</strong> / <strong>Collapse All</strong> untuk kontrol cepat.</div>
+  <div class="card">
+    <div class="graph-tabs">
+      <button class="graph-tab active" onclick="switchGraphTab('kb',this)">KB</button>
+      <button class="graph-tab" onclick="switchGraphTab('tka',this)">TK A</button>
+      <button class="graph-tab" onclick="switchGraphTab('tkb',this)">TK B</button>
+    </div>
+    <div style="margin-bottom:12px;display:flex;gap:8px">
+      <button onclick="graphExpandAll()" style="padding:4px 12px;font-size:.75rem;border:1px solid #ddd;border-radius:4px;background:#f8f9fa;cursor:pointer">Expand All</button>
+      <button onclick="graphCollapseAll()" style="padding:4px 12px;font-size:.75rem;border:1px solid #ddd;border-radius:4px;background:#f8f9fa;cursor:pointer">Collapse All</button>
+    </div>
+    <div class="graph-panel active" id="graph-kb"></div>
+    <div class="graph-panel" id="graph-tka"></div>
+    <div class="graph-panel" id="graph-tkb"></div>
+  </div>
+</div>
+
 <!-- ====== CP NEW KB ====== -->
 <div class="section" id="cp-new-kb">
   <div class="page-title">
@@ -2436,10 +2494,121 @@ function renderCpPointsNew() {
   });
 }
 
+// ===== OVERVIEW GRAPH =====
+function switchGraphTab(tab, btn) {
+  document.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.graph-panel').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('graph-' + tab).classList.add('active');
+}
+function toggleGraphNode(el) {
+  var label = el;
+  var children = el.nextElementSibling;
+  if (!children || !children.classList.contains('tree-children')) return;
+  var collapsed = !children.classList.contains('collapsed');
+  if (collapsed) {
+    children.classList.add('collapsed');
+    label.classList.add('collapsed');
+  } else {
+    children.classList.remove('collapsed');
+    label.classList.remove('collapsed');
+  }
+}
+function graphExpandAll() {
+  var panel = document.querySelector('.graph-panel.active');
+  if (!panel) return;
+  panel.querySelectorAll('.tree-children.collapsed').forEach(function(c){ c.classList.remove('collapsed'); });
+  panel.querySelectorAll('.tree-label.collapsed').forEach(function(l){ l.classList.remove('collapsed'); });
+}
+function graphCollapseAll() {
+  var panel = document.querySelector('.graph-panel.active');
+  if (!panel) return;
+  panel.querySelectorAll('.tree-children').forEach(function(c){ c.classList.add('collapsed'); });
+  panel.querySelectorAll('.tree-label').forEach(function(l){ l.classList.add('collapsed'); });
+}
+function renderOverviewGraph() {
+  var semMap = {
+    nmab: [1, 1, 2, 2],
+    jatidiri: [1, 1, 2, 1],
+    literasiSteam: [1, 1, 2, 2, 2, 2, 1]
+  };
+  var bidangNames = {nmab:'Nilai Agama & Budi Pekerti', jatidiri:'Jati Diri', literasiSteam:'Literasi, STEAM'};
+  var bidangClass = {nmab:'bidang-nmab', jatidiri:'bidang-jatidiri', literasiSteam:'bidang-litsteam'};
+  var bidangDot = {nmab:'#e74c3c', jatidiri:'#2980b9', literasiSteam:'#27ae60'};
+  var levels = [
+    {data: cpDataNewKb, target: 'graph-kb', label: 'KB'},
+    {data: cpDataNewTka, target: 'graph-tka', label: 'TK A'},
+    {data: cpDataNewTkb, target: 'graph-tkb', label: 'TK B'}
+  ];
+  var bidangKeys = ['nmab', 'jatidiri', 'literasiSteam'];
+  levels.forEach(function(lv) {
+    var html = '<div class="tree-root">';
+    html += '<div class="tree-label jenjang-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + lv.label + '</span></div>';
+    html += '<div class="tree-children">';
+    [1, 2].forEach(function(sem) {
+      html += '<div class="tree-node">';
+      html += '<div class="tree-label sem-node s' + sem + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">Semester ' + sem + '</span></div>';
+      html += '<div class="tree-children">';
+      bidangKeys.forEach(function(bk) {
+        if (!lv.data[bk]) return;
+        var cpGroups = [];
+        var currentCp = '';
+        lv.data[bk].forEach(function(p) {
+          if (p.subelemen !== currentCp) {
+            currentCp = p.subelemen;
+            cpGroups.push({cp: currentCp, points: []});
+          }
+          cpGroups[cpGroups.length - 1].points.push(p);
+        });
+        var smap = semMap[bk];
+        cpGroups.forEach(function(g, i) { g.sem = (i < smap.length) ? smap[i] : 1; g.cpNum = i + 1; });
+        var semGroups = cpGroups.filter(function(g) { return g.sem === sem; });
+        if (semGroups.length === 0) return;
+        var totalPoints = 0;
+        semGroups.forEach(function(g){ totalPoints += g.points.length; });
+        html += '<div class="tree-node">';
+        html += '<div class="tree-label ' + bidangClass[bk] + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + bidangNames[bk] + '</span><span class="badge">' + totalPoints + ' item</span></div>';
+        html += '<div class="tree-children collapsed">';
+        semGroups.forEach(function(g) {
+          html += '<div class="tree-node">';
+          var cpShort = g.cp.length > 60 ? g.cp.substring(0, 60) + '…' : g.cp;
+          html += '<div class="tree-label cp-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">CP ' + g.cpNum + ': ' + cpShort + '</span><span class="badge">' + g.points.length + '</span></div>';
+          html += '<div class="tree-children collapsed">';
+          var itemNum = 0;
+          g.points.forEach(function(p) {
+            itemNum++;
+            var num = g.cpNum + '.' + itemNum;
+            html += '<div class="tree-node">';
+            html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
+            html += '<div class="tree-children collapsed">';
+            if (p.atp.length > 0) {
+              p.atp.forEach(function(a) {
+                html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:' + bidangDot[bk] + '"></span>TP: ' + a + '</div></div>';
+              });
+            }
+            if (p.indikator.length > 0) {
+              p.indikator.forEach(function(ind) {
+                html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:#999"></span>ATP: ' + ind + '</div></div>';
+              });
+            }
+            html += '</div></div>';
+          });
+          html += '</div></div>';
+        });
+        html += '</div></div>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+    document.getElementById(lv.target).innerHTML = html;
+  });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
   renderCpPoints();
   renderCpPointsNew();
+  renderOverviewGraph();
   initSubtemaCfrr();
 });
 </script>
