@@ -2648,71 +2648,166 @@ function graphCollapseAllTest() {
   panel.querySelectorAll('.tree-children').forEach(function(c){ c.classList.add('collapsed'); });
   panel.querySelectorAll('.tree-label').forEach(function(l){ l.classList.add('collapsed'); });
 }
+var graphTestTopics = {
+  kb: [
+    { sem: 1, temas: [
+      { tema: 'Identitas dalam Kristus', topik: 'Aku Ciptaan Tuhan yang Hebat', subs: [
+        { name: 'Namaku Pemberian Tuhan', items: { nmab:['1.1','1.2'], jatidiri:['2.1','2.4'], literasiSteam:['3.2','3.4'] }},
+        { name: 'Anggota Tubuhku Karunia Tuhan', items: { nmab:[], jatidiri:['2.9','2.10'], literasiSteam:['3.7'] }},
+        { name: 'Panca Inderaku', items: { nmab:[], jatidiri:['2.11'], literasiSteam:['3.1','3.3'] }},
+        { name: 'Merawat Tubuh Pemberian Tuhan', items: { nmab:['1.3','1.4','1.5'], jatidiri:['2.2'], literasiSteam:['3.5','3.6'] }}
+      ]},
+      { tema: 'Ekspresi Kreativitas Beriman', topik: 'Aku Memuji Tuhan', subs: [
+        { name: 'Tepuk Tangan dan Nyanyianku', items: { nmab:[], jatidiri:['2.3'], literasiSteam:[] }},
+        { name: 'Alat Musik Sederhana', items: { nmab:[], jatidiri:[], literasiSteam:[] }},
+        { name: 'Tubuhku Bergerak untuk Tuhan (Tarian)', items: { nmab:[], jatidiri:[], literasiSteam:[] }},
+        { name: 'Warna-Warni Dunia Tuhan', items: { nmab:[], jatidiri:[], literasiSteam:['3.16'] }}
+      ]}
+    ]},
+    { sem: 2, temas: [
+      { tema: 'Mengenal Dunia Milik Allah', topik: 'Tuhan Pencipta Binatang dan Tanaman', subs: [
+        { name: 'Binatang Peliharaanku', items: { nmab:[], jatidiri:['2.6'], literasiSteam:['3.8','3.12'] }},
+        { name: 'Bunga dan Daun di Sekitarku', items: { nmab:[], jatidiri:['2.5'], literasiSteam:['3.9','3.10'] }},
+        { name: 'Suara Binatang Ciptaan Tuhan', items: { nmab:[], jatidiri:[], literasiSteam:['3.13','3.14'] }},
+        { name: 'Pemandangan Alam Ciptaan Tuhan (Gunung & Laut)', items: { nmab:['1.8'], jatidiri:[], literasiSteam:['3.11'] }}
+      ]},
+      { tema: 'Pelayanan Terbaik di Dunia Milik Allah', topik: 'Aku Suka Menolong', subs: [
+        { name: 'Menolong Papa Mama di Rumah', items: { nmab:[], jatidiri:['2.7'], literasiSteam:['3.15'] }},
+        { name: 'Berbagi Mainan dengan Teman', items: { nmab:['1.6'], jatidiri:[], literasiSteam:[] }},
+        { name: 'Maaf, Tolong, dan Terima Kasih', items: { nmab:['1.7'], jatidiri:[], literasiSteam:[] }},
+        { name: 'Merawat Barang Milikku (Tanggung Jawab)', items: { nmab:[], jatidiri:['2.8'], literasiSteam:[] }}
+      ]}
+    ]}
+  ],
+  tka: [
+    { sem: 1, temas: [
+      { tema: 'Identitas dalam Kristus', topik: 'Aku Berharga di Mata Tuhan', subs: [
+        { name: 'Ciri Fisikku Unik', items: { nmab:['1.1'], jatidiri:['2.4'], literasiSteam:['3.4'] }},
+        { name: 'Perasaanku (Tuhan Tahu Hatiku)', items: { nmab:[], jatidiri:['2.1','2.2'], literasiSteam:['3.2'] }},
+        { name: 'Keluargaku (Pemberian Tuhan)', items: { nmab:['1.2'], jatidiri:['2.3'], literasiSteam:['3.1','3.3'] }},
+        { name: 'Menjaga Tubuhku (Makan & Minum Bersyukur)', items: { nmab:['1.3','1.4','1.5'], jatidiri:['2.9','2.10'], literasiSteam:['3.5','3.6'] }}
+      ]},
+      { tema: 'Ekspresi Kreativitas Beriman', topik: 'Tanganku Berkarya Bagi Tuhan', subs: [
+        { name: 'Alat Musik Beragam Bunyi', items: { nmab:[], jatidiri:[], literasiSteam:[] }},
+        { name: 'Mewarnai Dunia dengan Kasih', items: { nmab:[], jatidiri:[], literasiSteam:['3.7'] }},
+        { name: 'Daud Memuji Tuhan', items: { nmab:[], jatidiri:[], literasiSteam:[] }},
+        { name: 'Menari Bersukacita untuk Tuhan', items: { nmab:[], jatidiri:['2.11'], literasiSteam:['3.21'] }}
+      ]}
+    ]},
+    { sem: 2, temas: [
+      { tema: 'Mengenal Dunia Milik Allah', topik: 'Indahnya Alam Ciptaan Tuhan', subs: [
+        { name: 'Binatang Darat, Air, dan Udara', items: { nmab:[], jatidiri:['2.6'], literasiSteam:['3.8','3.16'] }},
+        { name: 'Cuaca dan Musim', items: { nmab:[], jatidiri:['2.8'], literasiSteam:['3.14','3.15'] }},
+        { name: 'Buah dan Sayur Berkat Tuhan', items: { nmab:[], jatidiri:[], literasiSteam:['3.10','3.13'] }},
+        { name: 'Mengenal Bencana Alam (dan Pertolongan Tuhan)', items: { nmab:['1.8'], jatidiri:[], literasiSteam:['3.17','3.18'] }}
+      ]},
+      { tema: 'Pelayanan Terbaik di Dunia Milik Allah', topik: 'Pahlawan di Sekitarku', subs: [
+        { name: 'Dokter dan Perawat', items: { nmab:[], jatidiri:['2.5'], literasiSteam:['3.19'] }},
+        { name: 'Guru dan Pendeta (Pelayan Firman)', items: { nmab:['1.7'], jatidiri:[], literasiSteam:['3.9'] }},
+        { name: 'Polisi dan Pemadam Kebakaran', items: { nmab:[], jatidiri:[], literasiSteam:['3.20'] }},
+        { name: 'Sahabat yang Baik (Menolong Sesama)', items: { nmab:['1.6'], jatidiri:['2.7'], literasiSteam:['3.11','3.12'] }}
+      ]}
+    ]}
+  ],
+  tkb: [
+    { sem: 1, temas: [
+      { tema: 'Identitas dalam Kristus', topik: 'Aku adalah Anak Tuhan', subs: [
+        { name: 'Karakteristikku (Kelebihan & Kelemahan)', items: { nmab:['1.1'], jatidiri:['2.1','2.4'], literasiSteam:['3.2','3.4'] }},
+        { name: 'Silsilah Keluarga (Keluarga Allah)', items: { nmab:['1.2'], jatidiri:['2.3'], literasiSteam:['3.1','3.3'] }},
+        { name: 'Aku Bertumbuh Seperti Yesus', items: { nmab:['1.3'], jatidiri:['2.2'], literasiSteam:['3.5','3.6'] }},
+        { name: 'Bait Allah yang Sehat (Olahraga & Istirahat)', items: { nmab:['1.4','1.5','1.6'], jatidiri:['2.9'], literasiSteam:['3.7'] }}
+      ]},
+      { tema: 'Ekspresi Kreativitas Beriman', topik: 'Talentaku untuk Kemuliaan Tuhan', subs: [
+        { name: 'Paduan Suara & Orkestra Kelas', items: { nmab:[], jatidiri:['2.10'], literasiSteam:[] }},
+        { name: 'Panggung Teater Alkitab', items: { nmab:[], jatidiri:['2.11'], literasiSteam:[] }},
+        { name: 'Penemu Cilik (Inovasi untuk Tuhan)', items: { nmab:[], jatidiri:[], literasiSteam:[] }},
+        { name: 'Pameran Karya Seni Anak Tuhan', items: { nmab:[], jatidiri:[], literasiSteam:['3.21'] }}
+      ]}
+    ]},
+    { sem: 2, temas: [
+      { tema: 'Mengenal Dunia Milik Allah', topik: 'Aku Menjaga Bumi Ciptaan Tuhan', subs: [
+        { name: 'Tata Surya & Alam Semesta', items: { nmab:[], jatidiri:['2.6'], literasiSteam:['3.10','3.12'] }},
+        { name: 'Menjaga Kebersihan Lingkungan', items: { nmab:['1.9'], jatidiri:[], literasiSteam:['3.16','3.17'] }},
+        { name: 'Proses Tumbuh Kembang (Siklus)', items: { nmab:[], jatidiri:['2.5'], literasiSteam:['3.13','3.14','3.15'] }},
+        { name: 'Eksplorasi Bawah Laut Ciptaan Tuhan', items: { nmab:[], jatidiri:[], literasiSteam:['3.8','3.11'] }}
+      ]},
+      { tema: 'Pelayanan Terbaik di Dunia Milik Allah', topik: 'Aku Melayani Seperti Tuhan Yesus', subs: [
+        { name: 'Yesus Mencuci Kaki Murid-Nya (Kerendahan Hati)', items: { nmab:['1.8'], jatidiri:['2.7'], literasiSteam:['3.18'] }},
+        { name: 'Peduli pada yang Miskin dan Sakit (Misi)', items: { nmab:['1.7'], jatidiri:[], literasiSteam:['3.19'] }},
+        { name: 'Cita-citaku Melayani Tuhan', items: { nmab:[], jatidiri:['2.8'], literasiSteam:['3.9','3.20'] }},
+        { name: 'Pahlawan Lingkungan Ciptaan Allah', items: { nmab:[], jatidiri:[], literasiSteam:[] }}
+      ]}
+    ]}
+  ]
+};
 function renderOverviewGraphTest() {
-  var semMap = {
-    nmab: [1, 1, 2, 2],
-    jatidiri: [1, 1, 2, 1],
-    literasiSteam: [1, 1, 2, 2, 2, 2, 1]
-  };
   var bidangNames = {nmab:'Nilai Agama & Budi Pekerti', jatidiri:'Jati Diri', literasiSteam:'Literasi, STEAM'};
   var bidangClass = {nmab:'bidang-nmab', jatidiri:'bidang-jatidiri', literasiSteam:'bidang-litsteam'};
   var bidangDot = {nmab:'#e74c3c', jatidiri:'#2980b9', literasiSteam:'#27ae60'};
-  var levels = [
-    {data: cpDataNewKb, target: 'graph-test-kb', label: 'KB'},
-    {data: cpDataNewTka, target: 'graph-test-tka', label: 'TK A'},
-    {data: cpDataNewTkb, target: 'graph-test-tkb', label: 'TK B'}
-  ];
   var bidangKeys = ['nmab', 'jatidiri', 'literasiSteam'];
-  levels.forEach(function(lv) {
+  var dataSources = {kb: cpDataNewKb, tka: cpDataNewTka, tkb: cpDataNewTkb};
+  var targets = {kb:'graph-test-kb', tka:'graph-test-tka', tkb:'graph-test-tkb'};
+  var labels = {kb:'KB', tka:'TK A', tkb:'TK B'};
+  ['kb','tka','tkb'].forEach(function(jenjang) {
+    var data = dataSources[jenjang];
+    var topics = graphTestTopics[jenjang];
+    var lookup = {};
+    bidangKeys.forEach(function(bk) {
+      lookup[bk] = {};
+      if (!data[bk]) return;
+      var cpNum = 0; var currentSub = '';
+      var itemNum = 0;
+      data[bk].forEach(function(p) {
+        if (p.subelemen !== currentSub) { currentSub = p.subelemen; cpNum++; itemNum = 0; }
+        itemNum++;
+        lookup[bk][p.id] = {cpNum: cpNum, itemNum: itemNum, item: p};
+      });
+    });
     var html = '<div class="tree-root">';
-    html += '<div class="tree-label jenjang-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + lv.label + '</span></div>';
+    html += '<div class="tree-label jenjang-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + labels[jenjang] + '</span></div>';
     html += '<div class="tree-children">';
-    [1, 2].forEach(function(sem) {
+    topics.forEach(function(semData) {
       html += '<div class="tree-node">';
-      html += '<div class="tree-label sem-node s' + sem + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">Semester ' + sem + '</span></div>';
+      html += '<div class="tree-label sem-node s' + semData.sem + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">Semester ' + semData.sem + '</span></div>';
       html += '<div class="tree-children">';
       bidangKeys.forEach(function(bk) {
-        if (!lv.data[bk]) return;
-        var cpGroups = [];
-        var currentCp = '';
-        lv.data[bk].forEach(function(p) {
-          if (p.subelemen !== currentCp) {
-            currentCp = p.subelemen;
-            cpGroups.push({cp: currentCp, points: []});
-          }
-          cpGroups[cpGroups.length - 1].points.push(p);
-        });
-        var smap = semMap[bk];
-        cpGroups.forEach(function(g, i) { g.sem = (i < smap.length) ? smap[i] : 1; g.cpNum = i + 1; });
-        var semGroups = cpGroups.filter(function(g) { return g.sem === sem; });
-        if (semGroups.length === 0) return;
-        var totalPoints = 0;
-        semGroups.forEach(function(g){ totalPoints += g.points.length; });
+        var totalItems = 0;
+        semData.temas.forEach(function(t) { t.subs.forEach(function(s) { if (s.items[bk]) totalItems += s.items[bk].length; }); });
+        if (totalItems === 0) return;
         html += '<div class="tree-node">';
-        html += '<div class="tree-label ' + bidangClass[bk] + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + bidangNames[bk] + '</span><span class="badge">' + totalPoints + ' item</span></div>';
+        html += '<div class="tree-label ' + bidangClass[bk] + '" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + bidangNames[bk] + '</span><span class="badge">' + totalItems + ' item</span></div>';
         html += '<div class="tree-children collapsed">';
-        semGroups.forEach(function(g) {
+        semData.temas.forEach(function(t, ti) {
+          var temaItems = 0;
+          t.subs.forEach(function(s) { if (s.items[bk]) temaItems += s.items[bk].length; });
+          if (temaItems === 0) return;
+          var temaNum = (semData.sem - 1) * 2 + ti + 1;
           html += '<div class="tree-node">';
-          var cpShort = g.cp.length > 60 ? g.cp.substring(0, 60) + '…' : g.cp;
-          html += '<div class="tree-label cp-node" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">CP ' + g.cpNum + ': ' + cpShort + '</span><span class="badge">' + g.points.length + '</span></div>';
+          html += '<div class="tree-label" style="background:#f5f0ff;border:1px solid #d9c9f5" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>Tema ' + temaNum + ':</strong> ' + t.tema + '</span><span class="badge">' + temaItems + '</span></div>';
           html += '<div class="tree-children collapsed">';
-          var itemNum = 0;
-          g.points.forEach(function(p) {
-            itemNum++;
-            var num = g.cpNum + '.' + itemNum + '.';
+          html += '<div style="padding:4px 8px 4px 22px;font-size:.76rem;color:var(--muted);font-style:italic">Topik: «' + t.topik + '»</div>';
+          t.subs.forEach(function(s, si) {
+            var subItems = s.items[bk] || [];
+            if (subItems.length === 0) return;
             html += '<div class="tree-node">';
-            html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
+            html += '<div class="tree-label" style="background:#f9fafb;border:1px solid #e5e7eb" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl">' + (si + 1) + '. ' + s.name + '</span><span class="badge">' + subItems.length + '</span></div>';
             html += '<div class="tree-children collapsed">';
-            if (p.atp.length > 0) {
+            subItems.forEach(function(itemId) {
+              var info = lookup[bk][itemId];
+              if (!info) return;
+              var num = info.cpNum + '.' + info.itemNum + '.';
+              var p = info.item;
+              html += '<div class="tree-node">';
+              html += '<div class="tree-label" style="background:#fafafa;border:1px solid #eee" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>' + num + '</strong> ' + p.tp + '</span></div>';
+              html += '<div class="tree-children collapsed">';
               p.atp.forEach(function(a) {
                 html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:' + bidangDot[bk] + '"></span>TP: ' + a + '</div></div>';
               });
-            }
-            if (p.indikator.length > 0) {
               p.indikator.forEach(function(ind) {
                 html += '<div class="tree-leaf"><div class="tree-leaf-inner"><span class="leaf-dot" style="background:#999"></span>ATP: ' + ind + '</div></div>';
               });
-            }
+              html += '</div></div>';
+            });
             html += '</div></div>';
           });
           html += '</div></div>';
@@ -2722,7 +2817,7 @@ function renderOverviewGraphTest() {
       html += '</div></div>';
     });
     html += '</div></div>';
-    document.getElementById(lv.target).innerHTML = html;
+    document.getElementById(targets[jenjang]).innerHTML = html;
   });
 }
 
