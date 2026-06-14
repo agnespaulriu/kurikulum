@@ -267,9 +267,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <div class="sidebar-section-title">Capaian Pembelajaran</div>
     <a href="#" onclick="showSection('cp-new-overview',this)">Overview</a>
     <a href="#" onclick="showSection('cp-new-graph',this)">Overview Graph</a>
-    <a href="#" onclick="showSection('cp-new-kb',this)">Breakdown CP – KB</a>
-    <a href="#" onclick="showSection('cp-new-tka',this)">Breakdown CP – TK A</a>
-    <a href="#" onclick="showSection('cp-new-tkb',this)">Breakdown CP – TK B</a>
+    <a href="#" onclick="showSection('cp-breakdown',this)">Breakdown CP</a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">RPPM, Modul Ajar, dan Penilaian</div>
@@ -310,7 +308,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
   <div class="card-grid">
     <div class="stat-card"><div class="num">4</div><div class="label">Tema TWKA Tahun Ini</div></div>
     <div class="stat-card"><div class="num">3</div><div class="label">Jenjang: KB, TK A, TK B</div></div>
-    <div class="stat-card"><div class="num">14</div><div class="label">Halaman dalam Portal</div></div>
+    <div class="stat-card"><div class="num">12</div><div class="label">Halaman dalam Portal</div></div>
     <div class="stat-card"><div class="num">~9</div><div class="label">Minggu per Tema</div></div>
   </div>
 
@@ -364,7 +362,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
         <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Timeline</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Kalender akademik lengkap TA 2026-2027</td></tr>
         <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Overview CP</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Ringkasan pemetaan CP per semester untuk semua jenjang</td></tr>
         <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Overview Graph</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Visualisasi interaktif sebaran CP per tema dan sub topik</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Breakdown CP – KB / TK A / TK B</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Detail CP lengkap dengan TP dan ATP per jenjang</td></tr>
+        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Breakdown CP</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Detail CP lengkap dengan TP dan ATP per jenjang (KB, TK A, TK B)</td></tr>
         <tr><td style="padding:8px 10px">Proposal Perubahan TWKA</td><td style="padding:8px 10px">Alasan perubahan dari 6 ke 4 tema</td></tr>
       </tbody>
     </table>
@@ -703,33 +701,26 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 </div>
 
 <!-- ====== CP NEW KB ====== -->
-<div class="section" id="cp-new-kb">
+<div class="section" id="cp-breakdown">
   <div class="page-title">
-    <h1>Breakdown CP &mdash; KB</h1>
-    <p>Kelompok Bermain &middot; Detail CP lengkap dengan TP dan ATP</p>
+    <h1>Breakdown CP</h1>
+    <p>Detail CP lengkap dengan TP dan ATP per Jenjang</p>
   </div>
   <div class="info-box">Breakdown CP lengkap dengan TP dan ATP, diorganisir berdasarkan Semester, Tema, Topik, dan Sub Topik.</div>
-  <div class="card" id="cp-new-content-kb"></div>
-</div>
-
-<!-- ====== CP NEW TKA ====== -->
-<div class="section" id="cp-new-tka">
-  <div class="page-title">
-    <h1>Breakdown CP &mdash; TK A</h1>
-    <p>Taman Kanak-kanak A &middot; Detail CP lengkap dengan TP dan ATP</p>
+  <div style="display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:14px">
+    <button class="tab-btn active" onclick="switchCpTab('kb',this)">Breakdown CP &mdash; KB</button>
+    <button class="tab-btn" onclick="switchCpTab('tka',this)">Breakdown CP &mdash; TK A</button>
+    <button class="tab-btn" onclick="switchCpTab('tkb',this)">Breakdown CP &mdash; TK B</button>
   </div>
-  <div class="info-box">Breakdown CP lengkap dengan TP dan ATP, diorganisir berdasarkan Semester, Tema, Topik, dan Sub Topik.</div>
-  <div class="card" id="cp-new-content-tka"></div>
-</div>
-
-<!-- ====== CP NEW TKB ====== -->
-<div class="section" id="cp-new-tkb">
-  <div class="page-title">
-    <h1>Breakdown CP &mdash; TK B</h1>
-    <p>Taman Kanak-kanak B &middot; Detail CP lengkap dengan TP dan ATP</p>
+  <div class="tab-content active" id="cp-tab-kb">
+    <div class="card" id="cp-new-content-kb"></div>
   </div>
-  <div class="info-box">Breakdown CP lengkap dengan TP dan ATP, diorganisir berdasarkan Semester, Tema, Topik, dan Sub Topik.</div>
-  <div class="card" id="cp-new-content-tkb"></div>
+  <div class="tab-content" id="cp-tab-tka">
+    <div class="card" id="cp-new-content-tka"></div>
+  </div>
+  <div class="tab-content" id="cp-tab-tkb">
+    <div class="card" id="cp-new-content-tkb"></div>
+  </div>
 </div>
 
 <!-- ====== TIMELINE ====== -->
@@ -4867,6 +4858,12 @@ function renderCpPointsNew() {
 }
 
 // ===== OVERVIEW GRAPH =====
+function switchCpTab(tab, btn) {
+  btn.parentElement.querySelectorAll('.tab-btn').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  ['kb','tka','tkb'].forEach(function(k){ document.getElementById('cp-tab-' + k).classList.remove('active'); });
+  document.getElementById('cp-tab-' + tab).classList.add('active');
+}
 function switchGraphTab(tab, btn) {
   var tabs = document.getElementById('graph-tabs');
   tabs.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
