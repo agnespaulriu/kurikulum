@@ -26,14 +26,16 @@ a{color:inherit;text-decoration:none}
 .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px}
 
 /* LAYOUT */
-.layout{display:flex;flex:1}
+.layout{display:flex;flex:1;position:relative}
 
 /* SIDEBAR */
-.sidebar{width:260px;background:var(--sidebar-bg);color:var(--sidebar-text);min-height:calc(100vh - 60px);position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;flex-shrink:0;transition:width .3s}
-.sidebar.hidden{width:0;overflow:hidden}
-.sidebar-toggle{position:absolute;top:12px;right:-14px;width:28px;height:28px;border-radius:50%;background:var(--sidebar-bg);border:2px solid var(--border);color:var(--sidebar-text);font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:transform .3s}
-.sidebar.hidden .sidebar-toggle{right:-40px}
-.sidebar-inner{position:relative}
+.sidebar{width:260px;background:var(--sidebar-bg);color:var(--sidebar-text);min-height:calc(100vh - 60px);position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;flex-shrink:0;transition:width .25s ease}
+.sidebar.hidden{width:0;min-width:0;overflow:hidden;padding:0}
+
+/* SIDEBAR COLLAPSE BAR */
+.sidebar-collapse{width:20px;flex-shrink:0;position:sticky;top:60px;height:calc(100vh - 60px);display:flex;align-items:center;cursor:pointer;z-index:10}
+.sidebar-collapse::after{content:'';display:block;width:3px;height:40px;border-radius:3px;background:var(--border);margin:0 auto;transition:background .2s,height .2s}
+.sidebar-collapse:hover::after{background:var(--primary);height:60px}
 .sidebar-section{padding:12px 0}
 .sidebar-section-title{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);padding:8px 20px 4px}
 .sidebar-subgroup{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);padding:14px 20px 2px 32px;border-left:3px solid rgba(255,255,255,.1);margin-left:17px}
@@ -179,7 +181,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
   .sidebar{width:100%;min-height:auto;height:auto;position:static;display:none}
   .sidebar.open{display:block}
   .sidebar.hidden{width:100%;display:none}
-  .sidebar-toggle{display:none}
+  .sidebar-collapse{display:none}
   .hamburger{display:flex}
   .main{padding:16px}
   .cfrr-block{grid-template-columns:1fr 1fr}
@@ -280,7 +282,6 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 
 <div class="layout">
 <nav class="sidebar" id="sidebar">
-  <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">&#9664;</button>
   <div class="sidebar-section">
     <div class="sidebar-section-title">KB-TK Erenos</div>
     <a href="#" onclick="showSection('program-kbtk',this)">Program KB-TK Erenos</a>
@@ -309,6 +310,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <a href="#" onclick="showSection('proposal',this)">Proposal Perubahan TWKA</a>
   </div>
 </nav>
+<div class="sidebar-collapse" onclick="toggleSidebar()" title="Toggle sidebar"></div>
 
 <main class="main">
 
@@ -4697,13 +4699,11 @@ function showSection(id, el) {
 
 function toggleSidebar() {
   var sb = document.getElementById('sidebar');
-  var btn = sb.querySelector('.sidebar-toggle');
   if (window.innerWidth <= 768) {
     sb.classList.toggle('open');
     sb.classList.remove('hidden');
   } else {
     sb.classList.toggle('hidden');
-    btn.innerHTML = sb.classList.contains('hidden') ? '&#9654;' : '&#9664;';
   }
 }
 
