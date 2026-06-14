@@ -241,6 +241,22 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 .save-pdf-btn:hover{background:#2980b9}
 .save-pdf-btn:disabled{opacity:.5;cursor:not-allowed}
 .print-jenjang-label,.print-footer{display:none}
+
+/* SLIDESHOW */
+.slideshow{position:relative;background:#000;border-radius:10px;overflow:hidden}
+.slideshow img{width:100%;display:block}
+.slide-controls{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.slide-btn{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.25);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.slide-btn:hover{background:rgba(255,255,255,.45)}
+.slide-info{color:#fff;font-size:.85rem;font-weight:600}
+.slide-fullscreen{width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.25);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.slide-fullscreen:hover{background:rgba(255,255,255,.45)}
+.slideshow.fullscreen{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;border-radius:0;display:flex;align-items:center;justify-content:center;background:#000}
+.slideshow.fullscreen img{width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+.slideshow.fullscreen .slide-controls{padding:16px 24px}
+.slideshow.fullscreen .slide-btn{width:50px;height:50px;font-size:1.5rem}
+.slideshow.fullscreen .slide-info{font-size:1rem}
+.slideshow.fullscreen .slide-fullscreen{width:44px;height:44px;font-size:1.2rem}
 </style>
 </head>
 <body>
@@ -4640,28 +4656,14 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <h2 style="margin-bottom:6px">Program KB-TK Erenos</h2>
 <p style="color:var(--muted);margin-bottom:20px">Presentasi Program KB-TK Sekolah Erenos</p>
 
-<div class="card">
-<img src="img/program/1.png" alt="Slide 1" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/2.png" alt="Slide 2" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/3.png" alt="Slide 3" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/4.png" alt="Slide 4" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/5.png" alt="Slide 5" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/6.png" alt="Slide 6" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/7.png" alt="Slide 7" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/8.png" alt="Slide 8" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/9.png" alt="Slide 9" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/10.png" alt="Slide 10" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/11.png" alt="Slide 11" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/12.png" alt="Slide 12" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/13.png" alt="Slide 13" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/14.png" alt="Slide 14" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/15.png" alt="Slide 15" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/16.png" alt="Slide 16" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/17.png" alt="Slide 17" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/18.png" alt="Slide 18" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/19.png" alt="Slide 19" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/20.png" alt="Slide 20" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
-<img src="img/program/21.png" alt="Slide 21" style="width:100%;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
+<div class="slideshow" id="slideshow">
+<img id="slideImg" src="img/program/1.png" alt="Slide 1">
+<div class="slide-controls">
+  <button class="slide-btn" onclick="slideNav(-1)" title="Previous">&#9664;</button>
+  <span class="slide-info"><span id="slideNum">1</span> / 21</span>
+  <button class="slide-fullscreen" onclick="slideFullscreen()" id="slideFsBtn" title="Fullscreen">&#x26F6;</button>
+  <button class="slide-btn" onclick="slideNav(1)" title="Next">&#9654;</button>
+</div>
 </div>
 </div>
 
@@ -5540,6 +5542,38 @@ document.addEventListener('DOMContentLoaded', function() {
     btnDiv.appendChild(btn);
     pageTitle.parentNode.insertBefore(btnDiv, pageTitle.nextSibling);
   });
+});
+
+// ===== SLIDESHOW =====
+var slideCur = 1, slideTotal = 21;
+function slideNav(dir) {
+  slideCur += dir;
+  if (slideCur < 1) slideCur = slideTotal;
+  if (slideCur > slideTotal) slideCur = 1;
+  document.getElementById('slideImg').src = 'img/program/' + slideCur + '.png';
+  document.getElementById('slideImg').alt = 'Slide ' + slideCur;
+  document.getElementById('slideNum').textContent = slideCur;
+}
+function slideFullscreen() {
+  var el = document.getElementById('slideshow');
+  if (el.classList.contains('fullscreen')) {
+    el.classList.remove('fullscreen');
+    document.body.style.overflow = '';
+  } else {
+    el.classList.add('fullscreen');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  var ss = document.getElementById('slideshow');
+  if (!ss) return;
+  var section = document.getElementById('program-kbtk');
+  var isActive = section && section.classList.contains('active');
+  if (!isActive && !ss.classList.contains('fullscreen')) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); slideNav(1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); slideNav(-1); }
+  else if (e.key === 'Escape' && ss.classList.contains('fullscreen')) { slideFullscreen(); }
+  else if (e.key === 'f' || e.key === 'F') { slideFullscreen(); }
 });
 </script>
 </body>
