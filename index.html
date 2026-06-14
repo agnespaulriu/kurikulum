@@ -7,14 +7,16 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
+  --primary:#3498db;
   --sidebar-bg:#2c3e50;--sidebar-text:#ecf0f1;--sidebar-hover:#34495e;--sidebar-active:#1abc9c;
   --main-bg:#f5f6fa;--card-bg:#fff;--header-grad:linear-gradient(135deg,#2c3e50,#3498db);
   --creation:#27ae60;--fall:#e74c3c;--redemption:#2980b9;--renewal:#e67e22;
   --t1:#e74c3c;--t2:#e67e22;--t3:#27ae60;--t4:#3498db;
-  --text:#2c3e50;--muted:#7f8c8d;--border:#e0e0e0;
+  --text:#2c3e50;--muted:#5f6d7e;--border:#e0e0e0;
 }
 body{font-family:'Segoe UI',Arial,sans-serif;background:var(--main-bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh}
 a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px}
 
 /* HEADER */
 .top-header{background:var(--header-grad);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
@@ -196,6 +198,15 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
   .mapping-grid{grid-template-columns:1fr}
   .comparison-grid{grid-template-columns:1fr}
   .flow-arrow{display:none}
+  .tree-node{padding-left:14px}
+  .tree-node::before{left:5px}
+  .tree-node>.tree-label::before{left:-9px;width:9px}
+  .tree-label{font-size:.74rem;padding:5px 8px}
+  .tree-leaf{padding-left:14px;font-size:.7rem}
+  .tree-leaf::before,.tree-leaf::after{left:5px}
+  .tree-leaf::after{width:7px}
+  .card{overflow-x:auto}
+  table{display:block;overflow-x:auto;white-space:nowrap}
 }
 @media(max-width:480px){
   .cfrr-block{grid-template-columns:1fr}
@@ -275,9 +286,9 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <div class="sidebar-section-title">Capaian Pembelajaran</div>
     <a href="#" onclick="showSection('cp-new-overview',this)">📊 Overview</a>
     <a href="#" onclick="showSection('cp-new-graph',this)">🗺️ Overview Graph</a>
-    <a href="#" onclick="showSection('cp-new-kb',this)">📋 Breakdown CP NEW – KB</a>
-    <a href="#" onclick="showSection('cp-new-tka',this)">📋 Breakdown CP NEW – TK A</a>
-    <a href="#" onclick="showSection('cp-new-tkb',this)">📋 Breakdown CP NEW – TK B</a>
+    <a href="#" onclick="showSection('cp-new-kb',this)">📋 Breakdown CP – KB</a>
+    <a href="#" onclick="showSection('cp-new-tka',this)">📋 Breakdown CP – TK A</a>
+    <a href="#" onclick="showSection('cp-new-tkb',this)">📋 Breakdown CP – TK B</a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Dokumen Lain</div>
@@ -310,7 +321,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
   <div class="card-grid">
     <div class="stat-card"><div class="num">4</div><div class="label">Tema TWKA Tahun Ini</div></div>
     <div class="stat-card"><div class="num">3</div><div class="label">Jenjang: KB, TK A, TK B</div></div>
-    <div class="stat-card"><div class="num">5</div><div class="label">Dokumen dalam Portal</div></div>
+    <div class="stat-card"><div class="num">9</div><div class="label">Halaman dalam Portal</div></div>
     <div class="stat-card"><div class="num">~9</div><div class="label">Minggu per Tema</div></div>
   </div>
 
@@ -361,9 +372,10 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
       <thead><tr style="background:#f5f6fa"><th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border)">Dokumen</th><th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border)">Keterangan</th></tr></thead>
       <tbody>
         <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Mapping TWKA</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Jadwal tema &amp; subtema lengkap Sem 1 &amp; 2 + CFRR per subtopik</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Breakdown CP – KB</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">47 poin capaian + TP, ATP untuk KB</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Breakdown CP – TK A</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">48 poin capaian + TP, ATP untuk TK A</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Breakdown CP – TK B</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">48 poin capaian + TP, ATP untuk TK B</td></tr>
+        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Timeline</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Kalender akademik lengkap TA 2026-2027</td></tr>
+        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Overview CP</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Ringkasan pemetaan CP per semester untuk semua jenjang</td></tr>
+        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Overview Graph</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Visualisasi interaktif sebaran CP per tema dan sub topik</td></tr>
+        <tr><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Breakdown CP – KB / TK A / TK B</td><td style="padding:8px 10px;border-bottom:1px solid var(--border)">Detail CP lengkap dengan TP dan ATP per jenjang</td></tr>
         <tr><td style="padding:8px 10px">Proposal Perubahan TWKA</td><td style="padding:8px 10px">Alasan perubahan dari 6 ke 4 tema</td></tr>
       </tbody>
     </table>
@@ -647,7 +659,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <div class="section" id="cp-new-overview">
   <div class="page-title">
     <h1>Overview Pemetaan CP per Semester</h1>
-    <p>Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &middot; Semua Jenjang &middot; Sumber: Indikator Rapor 2025</p>
+    <p>Ringkasan pemetaan CP semua jenjang &middot; Sumber: Indikator Rapor 2025</p>
   </div>
 
   <div class="info-box">Sebaran Breakdown CP ke dalam struktur Tema, Topik, dan Sub Topik per semester. Semester 1 (Tema 1 &amp; 2) dan Semester 2 (Tema 3 &amp; 4).</div>
@@ -661,22 +673,22 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <div class="section" id="cp-new-graph">
   <div class="page-title">
     <h1>Overview Graph</h1>
-    <p>Visualisasi interaktif: Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &rsaquo; TP &rsaquo; ATP</p>
+    <p>Visualisasi interaktif sebaran CP ke dalam struktur Tema, Topik, dan Sub Topik</p>
   </div>
   <div class="info-box">Klik pada setiap node untuk membuka atau menutup detailnya. Badge warna menunjukkan bidang: <span style="display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600;color:#fff;background:#e74c3c">NMAB</span> <span style="display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600;color:#fff;background:#2980b9">Jati Diri</span> <span style="display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600;color:#fff;background:#27ae60">Lit. STEAM</span></div>
   <div class="card">
-    <div class="graph-tabs" id="graph-tabs">
-      <button class="graph-tab active" onclick="switchGraphTab('kb',this)">KB</button>
-      <button class="graph-tab" onclick="switchGraphTab('tka',this)">TK A</button>
-      <button class="graph-tab" onclick="switchGraphTab('tkb',this)">TK B</button>
+    <div class="graph-tabs" id="graph-tabs" role="tablist" aria-label="Pilih jenjang">
+      <button class="graph-tab active" role="tab" aria-selected="true" aria-controls="graph-kb" onclick="switchGraphTab('kb',this)">KB</button>
+      <button class="graph-tab" role="tab" aria-selected="false" aria-controls="graph-tka" onclick="switchGraphTab('tka',this)">TK A</button>
+      <button class="graph-tab" role="tab" aria-selected="false" aria-controls="graph-tkb" onclick="switchGraphTab('tkb',this)">TK B</button>
     </div>
     <div style="margin-bottom:12px;display:flex;gap:8px">
       <button onclick="graphExpandAll()" style="padding:4px 12px;font-size:.75rem;border:1px solid #ddd;border-radius:4px;background:#f8f9fa;cursor:pointer">Expand All</button>
       <button onclick="graphCollapseAll()" style="padding:4px 12px;font-size:.75rem;border:1px solid #ddd;border-radius:4px;background:#f8f9fa;cursor:pointer">Collapse All</button>
     </div>
-    <div class="graph-panel active" id="graph-kb"></div>
-    <div class="graph-panel" id="graph-tka"></div>
-    <div class="graph-panel" id="graph-tkb"></div>
+    <div class="graph-panel active" id="graph-kb" role="tabpanel" aria-label="KB"></div>
+    <div class="graph-panel" id="graph-tka" role="tabpanel" aria-label="TK A"></div>
+    <div class="graph-panel" id="graph-tkb" role="tabpanel" aria-label="TK B"></div>
   </div>
 
   <div class="card" style="margin-top:12px;padding:14px 18px;background:#fffbf0;border-left:4px solid #f39c12">
@@ -704,8 +716,8 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <!-- ====== CP NEW KB ====== -->
 <div class="section" id="cp-new-kb">
   <div class="page-title">
-    <h1>Breakdown CP NEW &mdash; KB</h1>
-    <p>Kelompok Bermain &middot; Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &rsaquo; TP &rsaquo; ATP</p>
+    <h1>Breakdown CP &mdash; KB</h1>
+    <p>Kelompok Bermain &middot; Detail CP lengkap dengan TP dan ATP</p>
   </div>
   <div class="info-box">Breakdown CP lengkap dengan TP dan ATP, diorganisir berdasarkan Semester, Tema, Topik, dan Sub Topik.</div>
   <div class="card" id="cp-new-content-kb"></div>
@@ -714,8 +726,8 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <!-- ====== CP NEW TKA ====== -->
 <div class="section" id="cp-new-tka">
   <div class="page-title">
-    <h1>Breakdown CP NEW &mdash; TK A</h1>
-    <p>Taman Kanak-kanak A &middot; Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &rsaquo; TP &rsaquo; ATP</p>
+    <h1>Breakdown CP &mdash; TK A</h1>
+    <p>Taman Kanak-kanak A &middot; Detail CP lengkap dengan TP dan ATP</p>
   </div>
   <div class="info-box">Breakdown CP lengkap dengan TP dan ATP, diorganisir berdasarkan Semester, Tema, Topik, dan Sub Topik.</div>
   <div class="card" id="cp-new-content-tka"></div>
@@ -724,8 +736,8 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 <!-- ====== CP NEW TKB ====== -->
 <div class="section" id="cp-new-tkb">
   <div class="page-title">
-    <h1>Breakdown CP NEW &mdash; TK B</h1>
-    <p>Taman Kanak-kanak B &middot; Semester &rsaquo; Tema &rsaquo; Topik &rsaquo; Sub Topik &rsaquo; Bidang &rsaquo; CP &rsaquo; Breakdown CP &rsaquo; TP &rsaquo; ATP</p>
+    <h1>Breakdown CP &mdash; TK B</h1>
+    <p>Taman Kanak-kanak B &middot; Detail CP lengkap dengan TP dan ATP</p>
   </div>
   <div class="info-box">Breakdown CP lengkap dengan TP dan ATP, diorganisir berdasarkan Semester, Tema, Topik, dan Sub Topik.</div>
   <div class="card" id="cp-new-content-tkb"></div>
@@ -989,10 +1001,15 @@ function showSection(id, el) {
   var target = document.getElementById(id);
   if (target) target.classList.add('active');
   if (el) el.classList.add('active');
+  else {
+    var link = document.querySelector('.sidebar a[onclick*="' + id + '"]');
+    if (link) link.classList.add('active');
+  }
   window.scrollTo({top:0,behavior:'smooth'});
   if (window.innerWidth <= 768) {
     document.getElementById('sidebar').classList.remove('open');
   }
+  history.replaceState(null, '', '#' + id);
   return false;
 }
 
@@ -1430,8 +1447,9 @@ function renderCpPointsNew() {
 // ===== OVERVIEW GRAPH =====
 function switchGraphTab(tab, btn) {
   var tabs = document.getElementById('graph-tabs');
-  tabs.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); });
+  tabs.querySelectorAll('.graph-tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
   btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
   document.querySelectorAll('[id^="graph-k"],[id^="graph-t"]').forEach(function(p){ p.classList.remove('active'); });
   document.getElementById('graph-' + tab).classList.add('active');
 }
@@ -1589,7 +1607,7 @@ function renderOverviewGraph() {
         var temaNum = (semData.sem - 1) * 2 + ti + 1;
         html += '<div class="tree-node">';
         html += '<div class="tree-label" style="background:#f5f0ff;border:1px solid #d9c9f5" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>Tema ' + temaNum + ':</strong> ' + t.tema + '</span><span class="badge">' + temaTotal + '</span></div>';
-        html += '<div class="tree-children collapsed">';
+        html += '<div class="tree-children">';
         html += '<div class="tree-node">';
         html += '<div class="tree-label" style="background:#f0f5ff;border:1px solid #c9d5f5" onclick="toggleGraphNode(this)"><span class="toggle">▼</span><span class="lbl"><strong>Topik:</strong> ' + t.topik + '</span><span class="badge">' + temaTotal + '</span></div>';
         html += '<div class="tree-children">';
@@ -1682,6 +1700,10 @@ document.addEventListener('DOMContentLoaded', function() {
   renderCpPointsNew();
   renderOverviewGraph();
   initSubtemaCfrr();
+  var hash = window.location.hash.replace('#','');
+  if (hash && document.getElementById(hash)) {
+    showSection(hash);
+  }
   ['cp-new-overview','cp-new-graph','cp-new-kb','cp-new-tka','cp-new-tkb'].forEach(function(id) {
     var section = document.getElementById(id);
     if (!section) return;
