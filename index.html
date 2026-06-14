@@ -158,51 +158,14 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 #backTop{position:fixed;bottom:24px;right:24px;background:var(--sidebar-bg);color:#fff;width:40px;height:40px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,.3);z-index:200;border:none}
 #backTop.visible{display:flex}
 
-/* PDF OVERLAY (hidden normally, shown only during print) */
-#pdf-overlay{display:none}
-
-/* PRINT */
+/* PRINT (Ctrl+P only) */
 @media print{
-  @page{size:A4;margin:20mm 16mm 22mm 16mm}
-  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-
-  /* === PDF document mode (Save as PDF button) === */
-  body.printing-pdf>*:not(#pdf-overlay){display:none!important}
-  body.printing-pdf #pdf-overlay{display:block!important;font-family:"Times New Roman",Georgia,"Noto Serif",serif;font-size:11pt;color:#000;line-height:1.5}
-  body.printing-pdf{background:#fff!important;margin:0;padding:0}
-  .pdf-header{text-align:center;margin-bottom:18px;padding-bottom:14px;border-bottom:3px double #000}
-  .pdf-header .school{font-size:15pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif}
-  .pdf-header .doctitle{font-size:12pt;font-weight:700;margin-top:6px;text-transform:uppercase}
-  .pdf-header .period{font-size:9pt;margin-top:4px;color:#333}
-  .pdf-jenjang{font-size:13pt;font-weight:700;margin:28px 0 6px;text-transform:uppercase;text-align:center}
-  .pdf-jenjang-line{border-bottom:1.5px solid #000;margin:0 auto 16px;width:60%}
-  .pdf-sem{font-size:11pt;font-weight:700;margin:20px 0 10px;text-transform:uppercase;text-decoration:underline}
-  .pdf-tema-block{margin:14px 0 10px;font-size:10pt}
-  .pdf-tema-block strong{font-size:10.5pt}
-  .pdf-sub-heading{font-size:10pt;font-weight:700;margin:14px 0 6px 8px}
-  .pdf-bidang-heading{font-size:9.5pt;font-weight:700;margin:10px 0 4px 8px;text-transform:uppercase;letter-spacing:.3px}
-  .pdf-cp-heading{font-size:9pt;font-style:italic;margin:6px 0 4px 8px;color:#333}
-  .pdf-table{width:100%;border-collapse:collapse;margin:6px 0 16px;font-size:9pt;page-break-inside:auto}
-  .pdf-table th{font-weight:700;text-align:left;padding:5px 7px;border:1px solid #000;background:#eee;font-size:8.5pt;font-family:Arial,sans-serif}
-  .pdf-table td{padding:5px 7px;border:1px solid #666;vertical-align:top;line-height:1.4}
-  .pdf-table tr{page-break-inside:avoid}
-  .pdf-table .cp-row{background:#f5f5f5;font-weight:700;font-style:italic;font-size:8.5pt}
-  .pdf-table ul,.pdf-table ol{margin:0 0 0 4px;padding-left:12px}
-  .pdf-table li{margin-bottom:2px}
-  .pdf-table td.num{text-align:center;font-weight:600;white-space:nowrap}
-  .pdf-footer{text-align:center;font-size:8pt;color:#666;border-top:1px solid #999;padding-top:8px;margin-top:28px;font-family:Arial,sans-serif}
-
-  /* === Normal Ctrl+P print === */
-  body:not(.printing-pdf) .sidebar,
-  body:not(.printing-pdf) .top-header,
-  body:not(.printing-pdf) .hamburger,
-  body:not(.printing-pdf) #backTop,
-  body:not(.printing-pdf) .save-pdf-btn,
-  body:not(.printing-pdf) .info-box{display:none!important}
-  body:not(.printing-pdf) .layout{display:block!important}
-  body:not(.printing-pdf) .main{padding:0!important;max-width:100%!important;margin:0!important}
-  body:not(.printing-pdf) .card{box-shadow:none!important;border:1px solid #ddd}
-  body:not(.printing-pdf) h1,h2,h3{page-break-after:avoid}
+  @page{margin:14mm 12mm 16mm 12mm}
+  .sidebar,.top-header,.hamburger,#backTop,.save-pdf-btn,.info-box{display:none!important}
+  .layout{display:block!important}
+  .main{padding:0!important;max-width:100%!important;margin:0!important}
+  .card{box-shadow:none!important;border:1px solid #ddd}
+  h1,h2,h3{page-break-after:avoid}
 }
 
 /* MOBILE */
@@ -1802,25 +1765,52 @@ function buildPdfHtml(sectionId) {
 }
 function saveAsPdf(sectionId) {
   var result = buildPdfHtml(sectionId);
-  var existing = document.getElementById('pdf-overlay');
-  if (existing) existing.remove();
-  var overlay = document.createElement('div');
-  overlay.id = 'pdf-overlay';
-  overlay.innerHTML =
+  var css =
+    '@page{size:A4;margin:20mm 16mm 22mm 16mm}' +
+    '*{box-sizing:border-box;print-color-adjust:exact;-webkit-print-color-adjust:exact}' +
+    'body{font-family:"Times New Roman",Georgia,serif;font-size:11pt;color:#000;line-height:1.5;margin:0;padding:0}' +
+    '.pdf-header{text-align:center;margin-bottom:18px;padding-bottom:14px;border-bottom:3px double #000}' +
+    '.pdf-header .school{font-size:15pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif}' +
+    '.pdf-header .doctitle{font-size:12pt;font-weight:700;margin-top:6px;text-transform:uppercase}' +
+    '.pdf-header .period{font-size:9pt;margin-top:4px;color:#333}' +
+    '.pdf-jenjang{font-size:13pt;font-weight:700;margin:28px 0 6px;text-transform:uppercase;text-align:center}' +
+    '.pdf-jenjang-line{border-bottom:1.5px solid #000;margin:0 auto 16px;width:60%}' +
+    '.pdf-sem{font-size:11pt;font-weight:700;margin:20px 0 10px;text-transform:uppercase;text-decoration:underline}' +
+    '.pdf-tema-block{margin:14px 0 10px;font-size:10pt}' +
+    '.pdf-tema-block strong{font-size:10.5pt}' +
+    '.pdf-sub-heading{font-size:10pt;font-weight:700;margin:14px 0 6px 8px}' +
+    '.pdf-bidang-heading{font-size:9.5pt;font-weight:700;margin:10px 0 4px 8px;text-transform:uppercase;letter-spacing:.3px}' +
+    '.pdf-table{width:100%;border-collapse:collapse;margin:6px 0 16px;font-size:9pt;page-break-inside:auto}' +
+    '.pdf-table th{font-weight:700;text-align:left;padding:5px 7px;border:1px solid #000;background:#eee;font-size:8.5pt;font-family:Arial,sans-serif}' +
+    '.pdf-table td{padding:5px 7px;border:1px solid #666;vertical-align:top;line-height:1.4}' +
+    '.pdf-table tr{page-break-inside:avoid}' +
+    '.pdf-table .cp-row{background:#f5f5f5;font-weight:700;font-style:italic;font-size:8.5pt}' +
+    '.pdf-table ul,.pdf-table ol{margin:0 0 0 4px;padding-left:12px}' +
+    '.pdf-table li{margin-bottom:2px}' +
+    '.pdf-table td.num{text-align:center;font-weight:600;white-space:nowrap}' +
+    '.pdf-footer{text-align:center;font-size:8pt;color:#666;border-top:1px solid #999;padding-top:8px;margin-top:28px;font-family:Arial,sans-serif}';
+  var docHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + result.title + '</title>' +
+    '<style>' + css + '</style></head><body>' +
     '<div class="pdf-header">' +
     '<div class="school">Sekolah Erenos KB-TK</div>' +
     '<div class="doctitle">' + result.title + '</div>' +
     '<div class="period">Tahun Pelajaran 2026–2027 · Kurikulum Merdeka · Fase Fondasi</div>' +
     '</div>' +
     result.content +
-    '<div class="pdf-footer">Sekolah Erenos KB-TK · Kurikulum TP 2026–2027 · kurikulumkbtk-erenos.agnespaulriu.web.id</div>';
-  document.body.appendChild(overlay);
-  document.body.classList.add('printing-pdf');
+    '<div class="pdf-footer">Sekolah Erenos KB-TK · Kurikulum TP 2026–2027 · kurikulumkbtk-erenos.agnespaulriu.web.id</div>' +
+    '</body></html>';
+  var iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:0;border:none;opacity:0;pointer-events:none';
+  document.body.appendChild(iframe);
+  var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  iframeDoc.open();
+  iframeDoc.write(docHtml);
+  iframeDoc.close();
   setTimeout(function() {
-    window.print();
-    document.body.classList.remove('printing-pdf');
-    overlay.remove();
-  }, 100);
+    iframe.contentWindow.focus();
+    iframe.contentWindow.print();
+    setTimeout(function() { iframe.remove(); }, 1000);
+  }, 300);
 }
 
 // ===== INIT =====
