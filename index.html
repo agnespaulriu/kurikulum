@@ -22,14 +22,15 @@ a{color:inherit;text-decoration:none}
 .top-header{background:var(--header-grad);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .top-header .logo{font-size:1.5rem;font-weight:700;letter-spacing:.5px}
 .top-header .subtitle{font-size:.85rem;opacity:.8}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto}
-.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
 
 /* LAYOUT */
 .layout{display:flex;flex:1}
 
 /* SIDEBAR */
-.sidebar{width:260px;background:var(--sidebar-bg);color:var(--sidebar-text);min-height:calc(100vh - 60px);position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;flex-shrink:0}
+.sidebar{width:260px;background:var(--sidebar-bg);color:var(--sidebar-text);min-height:calc(100vh - 60px);position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;flex-shrink:0;transition:margin-left .3s,width .3s}
+.sidebar.hidden{margin-left:-260px}
 .sidebar-section{padding:12px 0}
 .sidebar-section-title{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);padding:8px 20px 4px}
 .sidebar-subgroup{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);padding:14px 20px 2px 32px;border-left:3px solid rgba(255,255,255,.1);margin-left:17px}
@@ -172,9 +173,9 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 /* MOBILE */
 @media(max-width:768px){
   .layout{flex-direction:column}
-  .sidebar{width:100%;min-height:auto;height:auto;position:static;display:none}
+  .sidebar{width:100%;min-height:auto;height:auto;position:static;display:none;margin-left:0!important}
   .sidebar.open{display:block}
-  .hamburger{display:flex}
+  .sidebar.hidden{display:none}
   .main{padding:16px}
   .cfrr-block{grid-template-columns:1fr 1fr}
   .mapping-grid{grid-template-columns:1fr}
@@ -4689,7 +4690,13 @@ function showSection(id, el) {
 }
 
 function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
+  var sb = document.getElementById('sidebar');
+  if (window.innerWidth <= 768) {
+    sb.classList.toggle('open');
+    sb.classList.remove('hidden');
+  } else {
+    sb.classList.toggle('hidden');
+  }
 }
 
 // ===== COLLAPSIBLE =====
