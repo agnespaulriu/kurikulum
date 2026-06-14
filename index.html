@@ -163,37 +163,34 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 
 /* PRINT */
 @media print{
-  @page{size:A4;margin:18mm 15mm 20mm 15mm}
+  @page{size:A4;margin:20mm 16mm 22mm 16mm}
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 
   /* === PDF document mode (Save as PDF button) === */
   body.printing-pdf>*:not(#pdf-overlay){display:none!important}
-  body.printing-pdf #pdf-overlay{display:block!important}
+  body.printing-pdf #pdf-overlay{display:block!important;font-family:"Times New Roman",Georgia,"Noto Serif",serif;font-size:11pt;color:#000;line-height:1.5}
   body.printing-pdf{background:#fff!important;margin:0;padding:0}
-  .pdf-header{text-align:center;border-bottom:2.5px solid #2c3e50;padding-bottom:12px;margin-bottom:22px}
-  .pdf-header .school{font-size:14pt;font-weight:700;color:#2c3e50;letter-spacing:1.5px;text-transform:uppercase}
-  .pdf-header .doctitle{font-size:11.5pt;font-weight:600;margin-top:4px;color:#333}
-  .pdf-header .period{font-size:9pt;color:#777;margin-top:3px}
-  .pdf-jenjang{font-size:12pt;font-weight:700;color:#2c3e50;margin:26px 0 10px;padding:8px 0 6px;border-bottom:2px solid #2c3e50}
-  .pdf-sem{font-size:10.5pt;font-weight:700;background:#f4f4f4;padding:6px 12px;margin:20px 0 10px;border-left:4px solid #2c3e50;color:#2c3e50}
-  .pdf-tema{font-size:10pt;font-weight:600;color:#2c3e50;margin:14px 0 3px;padding-bottom:4px;border-bottom:1px solid #ddd}
-  .pdf-topik{font-size:9.5pt;font-weight:600;margin:3px 0 8px 12px;color:#555;font-style:italic}
-  .pdf-sub{font-size:9.5pt;font-weight:700;margin:10px 0 6px 20px;color:#333}
-  .pdf-ov-bidang{margin:4px 0 8px 34px;font-size:9pt;color:#444;line-height:1.6}
-  .pdf-ov-cp{margin:3px 0 1px 8px;font-size:8.5pt;color:#666}
-  .pdf-ov-item{margin:1px 0 1px 20px;font-size:8.5pt;color:#333}
-  .pdf-count{font-weight:400;color:#888;font-size:8.5pt}
-  .pdf-bidang{margin:6px 0 12px 24px}
-  .pdf-bidang-title{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.4px;margin:8px 0 4px;padding:3px 10px;background:#f5f5f5;border-left:3px solid #aaa}
-  .pdf-cp{margin:6px 0 12px 10px;padding:6px 0 6px 12px;border-left:2px solid #ddd}
-  .pdf-cp-name{font-size:8.5pt;font-weight:600;color:#444;margin-bottom:6px;font-style:italic}
-  .pdf-item{margin:6px 0 10px 10px;font-size:9pt;page-break-inside:avoid}
-  .pdf-item-title{font-weight:700;margin-bottom:3px;color:#222}
-  .pdf-label{font-weight:600;font-size:8.5pt;color:#666;margin:4px 0 1px}
-  .pdf-list{margin:2px 0 6px 20px;font-size:8.5pt;color:#333;padding-left:0}
-  .pdf-list li{margin-bottom:3px;line-height:1.5}
-  .pdf-ol{color:#555;list-style-type:decimal}
-  .pdf-footer{text-align:center;font-size:7.5pt;color:#aaa;border-top:1px solid #ddd;padding-top:10px;margin-top:30px}
+  .pdf-header{text-align:center;margin-bottom:18px;padding-bottom:14px;border-bottom:3px double #000}
+  .pdf-header .school{font-size:15pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif}
+  .pdf-header .doctitle{font-size:12pt;font-weight:700;margin-top:6px;text-transform:uppercase}
+  .pdf-header .period{font-size:9pt;margin-top:4px;color:#333}
+  .pdf-jenjang{font-size:13pt;font-weight:700;margin:28px 0 6px;text-transform:uppercase;text-align:center}
+  .pdf-jenjang-line{border-bottom:1.5px solid #000;margin:0 auto 16px;width:60%}
+  .pdf-sem{font-size:11pt;font-weight:700;margin:20px 0 10px;text-transform:uppercase;text-decoration:underline}
+  .pdf-tema-block{margin:14px 0 10px;font-size:10pt}
+  .pdf-tema-block strong{font-size:10.5pt}
+  .pdf-sub-heading{font-size:10pt;font-weight:700;margin:14px 0 6px 8px}
+  .pdf-bidang-heading{font-size:9.5pt;font-weight:700;margin:10px 0 4px 8px;text-transform:uppercase;letter-spacing:.3px}
+  .pdf-cp-heading{font-size:9pt;font-style:italic;margin:6px 0 4px 8px;color:#333}
+  .pdf-table{width:100%;border-collapse:collapse;margin:6px 0 16px;font-size:9pt;page-break-inside:auto}
+  .pdf-table th{font-weight:700;text-align:left;padding:5px 7px;border:1px solid #000;background:#eee;font-size:8.5pt;font-family:Arial,sans-serif}
+  .pdf-table td{padding:5px 7px;border:1px solid #666;vertical-align:top;line-height:1.4}
+  .pdf-table tr{page-break-inside:avoid}
+  .pdf-table .cp-row{background:#f5f5f5;font-weight:700;font-style:italic;font-size:8.5pt}
+  .pdf-table ul,.pdf-table ol{margin:0 0 0 4px;padding-left:12px}
+  .pdf-table li{margin-bottom:2px}
+  .pdf-table td.num{text-align:center;font-weight:600;white-space:nowrap}
+  .pdf-footer{text-align:center;font-size:8pt;color:#666;border-top:1px solid #999;padding-top:8px;margin-top:28px;font-family:Arial,sans-serif}
 
   /* === Normal Ctrl+P print === */
   body:not(.printing-pdf) .sidebar,
@@ -1693,17 +1690,18 @@ function renderOverviewGraph() {
 function buildPdfHtml(sectionId) {
   var jenjangLabels = {kb:'KB (Kelompok Bermain)', tka:'TK A (Taman Kanak-kanak A)', tkb:'TK B (Taman Kanak-kanak B)'};
   var bidangNames = {nmab:'Nilai Agama & Budi Pekerti', jatidiri:'Jati Diri', literasiSteam:'Literasi & STEAM'};
+  var bidangShort = {nmab:'NMAB', jatidiri:'Jati Diri', literasiSteam:'Lit. STEAM'};
   var bidangKeys = ['nmab','jatidiri','literasiSteam'];
   var dataSources = {kb: cpDataNewKb, tka: cpDataNewTka, tkb: cpDataNewTkb};
   var title, jenjangList, showDetail;
   if (sectionId === 'cp-new-overview') {
-    title = 'Overview Pemetaan CP per Semester';
+    title = 'Ringkasan Pemetaan Capaian Pembelajaran per Semester';
     jenjangList = ['kb','tka','tkb'];
     showDetail = false;
   } else if (sectionId === 'cp-new-graph') {
     var activePanel = document.querySelector('#cp-new-graph .graph-panel.active');
     var activeJenjang = activePanel ? activePanel.id.replace('graph-','') : 'kb';
-    title = 'Overview Graph — ' + jenjangLabels[activeJenjang];
+    title = 'Pemetaan Capaian Pembelajaran — ' + jenjangLabels[activeJenjang];
     jenjangList = [activeJenjang];
     showDetail = true;
   } else {
@@ -1714,7 +1712,9 @@ function buildPdfHtml(sectionId) {
   }
   var html = '';
   jenjangList.forEach(function(j) {
-    if (jenjangList.length > 1) html += '<h2 class="pdf-jenjang">' + jenjangLabels[j] + '</h2>';
+    if (jenjangList.length > 1) {
+      html += '<div class="pdf-jenjang">' + jenjangLabels[j] + '</div><div class="pdf-jenjang-line"></div>';
+    }
     var data = dataSources[j];
     var lookup = buildCpLookup(data);
     var topics = graphTopics[j];
@@ -1722,59 +1722,79 @@ function buildPdfHtml(sectionId) {
       html += '<div class="pdf-sem">Semester ' + semData.sem + '</div>';
       semData.temas.forEach(function(t, ti) {
         var temaNum = (semData.sem - 1) * 2 + ti + 1;
-        html += '<div class="pdf-tema">Tema ' + temaNum + ': ' + t.tema + '</div>';
-        html += '<div class="pdf-topik">Topik: ' + t.topik + '</div>';
-        t.subs.forEach(function(s, si) {
-          var hasItems = false;
-          bidangKeys.forEach(function(bk) { if ((s.items[bk]||[]).length) hasItems = true; });
-          if (!hasItems) return;
-          html += '<div class="pdf-sub">' + (si+1) + '. ' + s.name + '</div>';
-          bidangKeys.forEach(function(bk) {
-            var ids = s.items[bk] || [];
-            if (ids.length === 0) return;
-            var cpGroups = {};
-            ids.forEach(function(id) {
-              var info = lookup[bk] && lookup[bk][id];
-              if (!info) return;
-              if (!cpGroups[info.cpNum]) cpGroups[info.cpNum] = {cpNum: info.cpNum, subelemen: info.subelemen, items: []};
-              cpGroups[info.cpNum].items.push(info);
+        html += '<div class="pdf-tema-block"><strong>Tema ' + temaNum + ':</strong> ' + t.tema + '<br><em>Topik: ' + t.topik + '</em></div>';
+        if (!showDetail) {
+          html += '<table class="pdf-table"><thead><tr>' +
+            '<th style="width:5%">No</th>' +
+            '<th style="width:31%">Sub Topik</th>' +
+            '<th style="width:20%">' + bidangShort.nmab + '</th>' +
+            '<th style="width:20%">' + bidangShort.jatidiri + '</th>' +
+            '<th style="width:16%">' + bidangShort.literasiSteam + '</th>' +
+            '<th style="width:8%">Total</th>' +
+            '</tr></thead><tbody>';
+          var subNum = 0;
+          t.subs.forEach(function(s) {
+            var rowTotal = 0;
+            bidangKeys.forEach(function(bk) { rowTotal += (s.items[bk]||[]).length; });
+            if (rowTotal === 0) return;
+            subNum++;
+            html += '<tr><td class="num">' + subNum + '</td><td>' + s.name + '</td>';
+            bidangKeys.forEach(function(bk) {
+              var ids = s.items[bk] || [];
+              html += '<td>' + (ids.length ? ids.join(', ') : '—') + '</td>';
             });
-            if (!showDetail) {
-              html += '<div class="pdf-ov-bidang"><strong>' + bidangNames[bk] + '</strong> <span class="pdf-count">(' + ids.length + ')</span>';
-              Object.keys(cpGroups).sort(function(a,b){return a-b;}).forEach(function(k) {
-                var cpg = cpGroups[k];
-                html += '<div class="pdf-ov-cp">CP ' + cpg.cpNum + ': <em>' + cpg.subelemen + '</em></div>';
-                cpg.items.forEach(function(info) {
-                  html += '<div class="pdf-ov-item">' + info.cpNum + '.' + info.itemNum + '. ' + info.item.tp + '</div>';
-                });
+            html += '<td class="num">' + rowTotal + '</td></tr>';
+          });
+          html += '</tbody></table>';
+        } else {
+          t.subs.forEach(function(s, si) {
+            var hasItems = false;
+            bidangKeys.forEach(function(bk) { if ((s.items[bk]||[]).length) hasItems = true; });
+            if (!hasItems) return;
+            html += '<div class="pdf-sub-heading">' + (si+1) + '. ' + s.name + '</div>';
+            bidangKeys.forEach(function(bk) {
+              var ids = s.items[bk] || [];
+              if (ids.length === 0) return;
+              var cpGroups = {};
+              ids.forEach(function(id) {
+                var info = lookup[bk] && lookup[bk][id];
+                if (!info) return;
+                if (!cpGroups[info.cpNum]) cpGroups[info.cpNum] = {cpNum: info.cpNum, subelemen: info.subelemen, items: []};
+                cpGroups[info.cpNum].items.push(info);
               });
-              html += '</div>';
-            } else {
-              html += '<div class="pdf-bidang"><div class="pdf-bidang-title">' + bidangNames[bk] + '</div>';
+              html += '<div class="pdf-bidang-heading">' + bidangNames[bk] + '</div>';
+              html += '<table class="pdf-table"><thead><tr>' +
+                '<th style="width:6%">No</th>' +
+                '<th style="width:22%">Breakdown CP</th>' +
+                '<th style="width:36%">TP</th>' +
+                '<th style="width:36%">ATP</th>' +
+                '</tr></thead><tbody>';
               Object.keys(cpGroups).sort(function(a,b){return a-b;}).forEach(function(k) {
                 var cpg = cpGroups[k];
-                html += '<div class="pdf-cp"><div class="pdf-cp-name">CP ' + cpg.cpNum + ': ' + cpg.subelemen + '</div>';
+                html += '<tr class="cp-row"><td colspan="4">CP ' + cpg.cpNum + ': ' + cpg.subelemen + '</td></tr>';
                 cpg.items.forEach(function(info) {
                   var p = info.item;
-                  html += '<div class="pdf-item"><div class="pdf-item-title">' + info.cpNum + '.' + info.itemNum + '. ' + p.tp + '</div>';
+                  html += '<tr><td class="num">' + info.cpNum + '.' + info.itemNum + '</td>';
+                  html += '<td>' + p.tp + '</td>';
+                  html += '<td>';
                   if (p.atp && p.atp.length) {
-                    html += '<div class="pdf-label">TP:</div><ul class="pdf-list">';
+                    html += '<ul>';
                     p.atp.forEach(function(a) { html += '<li>' + a + '</li>'; });
                     html += '</ul>';
                   }
+                  html += '</td><td>';
                   if (p.indikator && p.indikator.length) {
-                    html += '<div class="pdf-label">ATP:</div><ol class="pdf-list pdf-ol">';
+                    html += '<ol>';
                     p.indikator.forEach(function(ind) { html += '<li>' + ind + '</li>'; });
                     html += '</ol>';
                   }
-                  html += '</div>';
+                  html += '</td></tr>';
                 });
-                html += '</div>';
               });
-              html += '</div>';
-            }
+              html += '</tbody></table>';
+            });
           });
-        });
+        }
       });
     });
   });
@@ -1786,10 +1806,6 @@ function saveAsPdf(sectionId) {
   if (existing) existing.remove();
   var overlay = document.createElement('div');
   overlay.id = 'pdf-overlay';
-  overlay.style.fontFamily = '"Segoe UI",Tahoma,Arial,sans-serif';
-  overlay.style.fontSize = '10pt';
-  overlay.style.lineHeight = '1.55';
-  overlay.style.color = '#222';
   overlay.innerHTML =
     '<div class="pdf-header">' +
     '<div class="school">Sekolah Erenos KB-TK</div>' +
