@@ -158,33 +158,54 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 #backTop{position:fixed;bottom:24px;right:24px;background:var(--sidebar-bg);color:#fff;width:40px;height:40px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,.3);z-index:200;border:none}
 #backTop.visible{display:flex}
 
+/* PDF OVERLAY (hidden normally, shown only during print) */
+#pdf-overlay{display:none}
+
 /* PRINT */
 @media print{
-  @page{margin:14mm 12mm 16mm 12mm}
+  @page{size:A4;margin:18mm 15mm 20mm 15mm}
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-  body{background:#fff!important;color:#000!important;font-size:10pt}
-  .sidebar,.top-header,.hamburger,#backTop,.save-pdf-btn,.info-box{display:none!important}
-  .layout{display:block!important}
-  .main{padding:0!important;max-width:100%!important;margin:0!important}
-  .section{display:block!important;page-break-before:always}
-  .section:first-of-type{page-break-before:auto}
-  body[data-print-section] .section{display:none!important}
-  body[data-print-section="cp-new-overview"] #cp-new-overview,
-  body[data-print-section="cp-new-graph"] #cp-new-graph,
-  body[data-print-section="cp-new-kb"] #cp-new-kb,
-  body[data-print-section="cp-new-tka"] #cp-new-tka,
-  body[data-print-section="cp-new-tkb"] #cp-new-tkb{display:block!important;page-break-before:auto}
-  .card{box-shadow:none!important;border:1px solid #ddd}
-  .collapsible-body{display:block!important}
-  .tab-content{display:block!important}
-  .graph-tabs,[onclick*="graphExpandAll"],[onclick*="graphCollapseAll"]{display:none!important}
-  .graph-panel:not(.active){display:none!important}
-  .tree-children.collapsed{max-height:none!important;opacity:1!important}
-  .tree-label.collapsed .toggle{transform:none!important}
-  h1,h2,h3{page-break-after:avoid}
-  .page-title{page-break-after:avoid}
-  .print-jenjang-label{display:inline-block!important;font-weight:700;font-size:.85rem;margin-bottom:12px;padding:6px 14px;background:#f0f4ff;border-radius:5px;border:1px solid #d0d8e8}
-  .print-footer{display:block!important;margin-top:24px;padding-top:10px;border-top:1px solid #ccc;font-size:8pt;color:#888;text-align:center}
+
+  /* === PDF document mode (Save as PDF button) === */
+  body.printing-pdf>*:not(#pdf-overlay){display:none!important}
+  body.printing-pdf #pdf-overlay{display:block!important}
+  body.printing-pdf{background:#fff!important;margin:0;padding:0}
+  .pdf-header{text-align:center;border-bottom:2.5px solid #2c3e50;padding-bottom:12px;margin-bottom:22px}
+  .pdf-header .school{font-size:14pt;font-weight:700;color:#2c3e50;letter-spacing:1.5px;text-transform:uppercase}
+  .pdf-header .doctitle{font-size:11.5pt;font-weight:600;margin-top:4px;color:#333}
+  .pdf-header .period{font-size:9pt;color:#777;margin-top:3px}
+  .pdf-jenjang{font-size:12pt;font-weight:700;color:#2c3e50;margin:26px 0 10px;padding:8px 0 6px;border-bottom:2px solid #2c3e50}
+  .pdf-sem{font-size:10.5pt;font-weight:700;background:#f4f4f4;padding:6px 12px;margin:20px 0 10px;border-left:4px solid #2c3e50;color:#2c3e50}
+  .pdf-tema{font-size:10pt;font-weight:600;color:#2c3e50;margin:14px 0 3px;padding-bottom:4px;border-bottom:1px solid #ddd}
+  .pdf-topik{font-size:9.5pt;font-weight:600;margin:3px 0 8px 12px;color:#555;font-style:italic}
+  .pdf-sub{font-size:9.5pt;font-weight:700;margin:10px 0 6px 20px;color:#333}
+  .pdf-ov-bidang{margin:4px 0 8px 34px;font-size:9pt;color:#444;line-height:1.6}
+  .pdf-ov-cp{margin:3px 0 1px 8px;font-size:8.5pt;color:#666}
+  .pdf-ov-item{margin:1px 0 1px 20px;font-size:8.5pt;color:#333}
+  .pdf-count{font-weight:400;color:#888;font-size:8.5pt}
+  .pdf-bidang{margin:6px 0 12px 24px}
+  .pdf-bidang-title{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.4px;margin:8px 0 4px;padding:3px 10px;background:#f5f5f5;border-left:3px solid #aaa}
+  .pdf-cp{margin:6px 0 12px 10px;padding:6px 0 6px 12px;border-left:2px solid #ddd}
+  .pdf-cp-name{font-size:8.5pt;font-weight:600;color:#444;margin-bottom:6px;font-style:italic}
+  .pdf-item{margin:6px 0 10px 10px;font-size:9pt;page-break-inside:avoid}
+  .pdf-item-title{font-weight:700;margin-bottom:3px;color:#222}
+  .pdf-label{font-weight:600;font-size:8.5pt;color:#666;margin:4px 0 1px}
+  .pdf-list{margin:2px 0 6px 20px;font-size:8.5pt;color:#333;padding-left:0}
+  .pdf-list li{margin-bottom:3px;line-height:1.5}
+  .pdf-ol{color:#555;list-style-type:decimal}
+  .pdf-footer{text-align:center;font-size:7.5pt;color:#aaa;border-top:1px solid #ddd;padding-top:10px;margin-top:30px}
+
+  /* === Normal Ctrl+P print === */
+  body:not(.printing-pdf) .sidebar,
+  body:not(.printing-pdf) .top-header,
+  body:not(.printing-pdf) .hamburger,
+  body:not(.printing-pdf) #backTop,
+  body:not(.printing-pdf) .save-pdf-btn,
+  body:not(.printing-pdf) .info-box{display:none!important}
+  body:not(.printing-pdf) .layout{display:block!important}
+  body:not(.printing-pdf) .main{padding:0!important;max-width:100%!important;margin:0!important}
+  body:not(.printing-pdf) .card{box-shadow:none!important;border:1px solid #ddd}
+  body:not(.printing-pdf) h1,h2,h3{page-break-after:avoid}
 }
 
 /* MOBILE */
@@ -1669,29 +1690,121 @@ function renderOverviewGraph() {
 }
 
 // ===== SAVE AS PDF =====
-function saveAsPdf(sectionId) {
-  var section = document.getElementById(sectionId);
-  if (!section) return;
-  document.body.setAttribute('data-print-section', sectionId);
-  var jenjangLabel = null;
-  if (sectionId === 'cp-new-graph') {
-    var activeTab = document.querySelector('#graph-tabs .graph-tab.active');
-    if (activeTab) {
-      jenjangLabel = document.createElement('div');
-      jenjangLabel.className = 'print-jenjang-label';
-      jenjangLabel.textContent = 'Jenjang: ' + activeTab.textContent.trim();
-      var graphCard = section.querySelector('.card');
-      if (graphCard) graphCard.insertBefore(jenjangLabel, graphCard.firstChild);
-    }
+function buildPdfHtml(sectionId) {
+  var jenjangLabels = {kb:'KB (Kelompok Bermain)', tka:'TK A (Taman Kanak-kanak A)', tkb:'TK B (Taman Kanak-kanak B)'};
+  var bidangNames = {nmab:'Nilai Agama & Budi Pekerti', jatidiri:'Jati Diri', literasiSteam:'Literasi & STEAM'};
+  var bidangKeys = ['nmab','jatidiri','literasiSteam'];
+  var dataSources = {kb: cpDataNewKb, tka: cpDataNewTka, tkb: cpDataNewTkb};
+  var title, jenjangList, showDetail;
+  if (sectionId === 'cp-new-overview') {
+    title = 'Overview Pemetaan CP per Semester';
+    jenjangList = ['kb','tka','tkb'];
+    showDetail = false;
+  } else if (sectionId === 'cp-new-graph') {
+    var activePanel = document.querySelector('#cp-new-graph .graph-panel.active');
+    var activeJenjang = activePanel ? activePanel.id.replace('graph-','') : 'kb';
+    title = 'Overview Graph — ' + jenjangLabels[activeJenjang];
+    jenjangList = [activeJenjang];
+    showDetail = true;
+  } else {
+    var jenjang = sectionId.replace('cp-new-','');
+    title = 'Breakdown Capaian Pembelajaran — ' + jenjangLabels[jenjang];
+    jenjangList = [jenjang];
+    showDetail = true;
   }
-  var footer = document.createElement('div');
-  footer.className = 'print-footer';
-  footer.textContent = 'Sekolah Erenos KB-TK · Kurikulum TP 2026-2027 · kurikulumkbtk-erenos.agnespaulriu.web.id';
-  section.appendChild(footer);
-  window.print();
-  document.body.removeAttribute('data-print-section');
-  if (jenjangLabel) jenjangLabel.remove();
-  footer.remove();
+  var html = '';
+  jenjangList.forEach(function(j) {
+    if (jenjangList.length > 1) html += '<h2 class="pdf-jenjang">' + jenjangLabels[j] + '</h2>';
+    var data = dataSources[j];
+    var lookup = buildCpLookup(data);
+    var topics = graphTopics[j];
+    topics.forEach(function(semData) {
+      html += '<div class="pdf-sem">Semester ' + semData.sem + '</div>';
+      semData.temas.forEach(function(t, ti) {
+        var temaNum = (semData.sem - 1) * 2 + ti + 1;
+        html += '<div class="pdf-tema">Tema ' + temaNum + ': ' + t.tema + '</div>';
+        html += '<div class="pdf-topik">Topik: ' + t.topik + '</div>';
+        t.subs.forEach(function(s, si) {
+          var hasItems = false;
+          bidangKeys.forEach(function(bk) { if ((s.items[bk]||[]).length) hasItems = true; });
+          if (!hasItems) return;
+          html += '<div class="pdf-sub">' + (si+1) + '. ' + s.name + '</div>';
+          bidangKeys.forEach(function(bk) {
+            var ids = s.items[bk] || [];
+            if (ids.length === 0) return;
+            var cpGroups = {};
+            ids.forEach(function(id) {
+              var info = lookup[bk] && lookup[bk][id];
+              if (!info) return;
+              if (!cpGroups[info.cpNum]) cpGroups[info.cpNum] = {cpNum: info.cpNum, subelemen: info.subelemen, items: []};
+              cpGroups[info.cpNum].items.push(info);
+            });
+            if (!showDetail) {
+              html += '<div class="pdf-ov-bidang"><strong>' + bidangNames[bk] + '</strong> <span class="pdf-count">(' + ids.length + ')</span>';
+              Object.keys(cpGroups).sort(function(a,b){return a-b;}).forEach(function(k) {
+                var cpg = cpGroups[k];
+                html += '<div class="pdf-ov-cp">CP ' + cpg.cpNum + ': <em>' + cpg.subelemen + '</em></div>';
+                cpg.items.forEach(function(info) {
+                  html += '<div class="pdf-ov-item">' + info.cpNum + '.' + info.itemNum + '. ' + info.item.tp + '</div>';
+                });
+              });
+              html += '</div>';
+            } else {
+              html += '<div class="pdf-bidang"><div class="pdf-bidang-title">' + bidangNames[bk] + '</div>';
+              Object.keys(cpGroups).sort(function(a,b){return a-b;}).forEach(function(k) {
+                var cpg = cpGroups[k];
+                html += '<div class="pdf-cp"><div class="pdf-cp-name">CP ' + cpg.cpNum + ': ' + cpg.subelemen + '</div>';
+                cpg.items.forEach(function(info) {
+                  var p = info.item;
+                  html += '<div class="pdf-item"><div class="pdf-item-title">' + info.cpNum + '.' + info.itemNum + '. ' + p.tp + '</div>';
+                  if (p.atp && p.atp.length) {
+                    html += '<div class="pdf-label">TP:</div><ul class="pdf-list">';
+                    p.atp.forEach(function(a) { html += '<li>' + a + '</li>'; });
+                    html += '</ul>';
+                  }
+                  if (p.indikator && p.indikator.length) {
+                    html += '<div class="pdf-label">ATP:</div><ol class="pdf-list pdf-ol">';
+                    p.indikator.forEach(function(ind) { html += '<li>' + ind + '</li>'; });
+                    html += '</ol>';
+                  }
+                  html += '</div>';
+                });
+                html += '</div>';
+              });
+              html += '</div>';
+            }
+          });
+        });
+      });
+    });
+  });
+  return {title: title, content: html};
+}
+function saveAsPdf(sectionId) {
+  var result = buildPdfHtml(sectionId);
+  var existing = document.getElementById('pdf-overlay');
+  if (existing) existing.remove();
+  var overlay = document.createElement('div');
+  overlay.id = 'pdf-overlay';
+  overlay.style.fontFamily = '"Segoe UI",Tahoma,Arial,sans-serif';
+  overlay.style.fontSize = '10pt';
+  overlay.style.lineHeight = '1.55';
+  overlay.style.color = '#222';
+  overlay.innerHTML =
+    '<div class="pdf-header">' +
+    '<div class="school">Sekolah Erenos KB-TK</div>' +
+    '<div class="doctitle">' + result.title + '</div>' +
+    '<div class="period">Tahun Pelajaran 2026–2027 · Kurikulum Merdeka · Fase Fondasi</div>' +
+    '</div>' +
+    result.content +
+    '<div class="pdf-footer">Sekolah Erenos KB-TK · Kurikulum TP 2026–2027 · kurikulumkbtk-erenos.agnespaulriu.web.id</div>';
+  document.body.appendChild(overlay);
+  document.body.classList.add('printing-pdf');
+  setTimeout(function() {
+    window.print();
+    document.body.classList.remove('printing-pdf');
+    overlay.remove();
+  }, 100);
 }
 
 // ===== INIT =====
