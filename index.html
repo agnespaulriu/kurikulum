@@ -39,6 +39,12 @@ a{color:inherit;text-decoration:none}
 .sidebar-section{padding:12px 0}
 .sidebar-section-title{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);padding:8px 20px 4px}
 .sidebar-subgroup{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);padding:14px 20px 2px 32px;border-left:3px solid rgba(255,255,255,.1);margin-left:17px}
+.sidebar-toggle{font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.45);padding:10px 20px 4px 20px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.sidebar-toggle:hover{color:rgba(255,255,255,.8)}
+.sidebar-toggle::before{content:'\25B6';font-size:.5rem;transition:transform .2s;display:inline-block}
+.sidebar-toggle.open::before{transform:rotate(90deg)}
+.sidebar-toggle+.sidebar-group{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.sidebar-toggle.open+.sidebar-group{max-height:600px}
 .sidebar a{display:block;padding:10px 20px;color:var(--sidebar-text);font-size:.88rem;transition:background .2s,color .2s;border-left:3px solid transparent}
 .sidebar a:hover{background:var(--sidebar-hover);border-left-color:rgba(255,255,255,.3)}
 .sidebar a.active{background:var(--sidebar-hover);border-left-color:var(--sidebar-active);color:#1abc9c;font-weight:600}
@@ -304,38 +310,50 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
     <a href="#" onclick="showSection('metode-sentra',this)">Metode Pembelajaran Sentra</a>
     <a href="#" onclick="showSection('jadwal-pembelajaran',this)">Jadwal Pembelajaran</a>
     <a href="#" onclick="showSection('kebijakan-penilaian',this)">Kebijakan Penilaian</a>
-    <div class="sidebar-subgroup">KB &mdash; Kalender &amp; Sentra</div>
-    <a href="#" onclick="showSection('kalender-sentra',this)">Kalender Sentra KB</a>
-    <div class="sidebar-subgroup">KB &mdash; Semester 1</div>
-    <a href="#" onclick="showSection('rppm',this)">RPPM Sentra KB</a>
-    <a href="#" onclick="showSection('modul-ajar-persiapan',this)">Modul Ajar S.Persiapan</a>
-    <a href="#" onclick="showSection('modul-ajar-balok',this)">Modul Ajar S.Balok</a>
-    <a href="#" onclick="showSection('modul-ajar-seni',this)">Modul Ajar S.Seni</a>
-    <a href="#" onclick="showSection('modul-ajar-alam',this)">Modul Ajar S.Alam</a>
-    <a href="#" onclick="showSection('modul-ajar-peran',this)">Modul Ajar S.Peran</a>
-    <div class="sidebar-subgroup">KB &mdash; Semester 2</div>
-    <a href="#" onclick="showSection('rppm-s2',this)">RPPM Sentra KB</a>
-    <a href="#" onclick="showSection('modul-ajar-persiapan-s2',this)">Modul Ajar S.Persiapan</a>
-    <a href="#" onclick="showSection('modul-ajar-balok-s2',this)">Modul Ajar S.Balok</a>
-    <a href="#" onclick="showSection('modul-ajar-seni-s2',this)">Modul Ajar S.Seni</a>
-    <a href="#" onclick="showSection('modul-ajar-alam-s2',this)">Modul Ajar S.Alam</a>
-    <a href="#" onclick="showSection('modul-ajar-peran-s2',this)">Modul Ajar S.Peran</a>
-    <div class="sidebar-subgroup">TK A &mdash; Kalender &amp; Sentra</div>
-    <a href="#" onclick="showSection('tka-kalender-sentra',this)">Kalender Sentra TK A</a>
-    <div class="sidebar-subgroup">TK A &mdash; Semester 1</div>
-    <a href="#" onclick="showSection('tka-rppm',this)">RPPM Sentra TK A</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-persiapan',this)">Modul Ajar S.Persiapan</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-alam',this)">Modul Ajar S.Alam</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-peran',this)">Modul Ajar S.Peran</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-seni',this)">Modul Ajar S.Seni</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-balok',this)">Modul Ajar S.Balok</a>
-    <div class="sidebar-subgroup">TK A &mdash; Semester 2</div>
-    <a href="#" onclick="showSection('tka-rppm-s2',this)">RPPM Sentra TK A</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-persiapan-s2',this)">Modul Ajar S.Persiapan</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-alam-s2',this)">Modul Ajar S.Alam</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-peran-s2',this)">Modul Ajar S.Peran</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-seni-s2',this)">Modul Ajar S.Seni</a>
-    <a href="#" onclick="showSection('tka-modul-ajar-balok-s2',this)">Modul Ajar S.Balok</a>
+    <div class="sidebar-toggle" onclick="this.classList.toggle('open')">KB &mdash; Kalender</div>
+    <div class="sidebar-group">
+      <a href="#" onclick="showSection('kalender-sentra',this)">Kalender Sentra KB</a>
+    </div>
+    <div class="sidebar-toggle" onclick="this.classList.toggle('open')">KB &mdash; Semester 1</div>
+    <div class="sidebar-group">
+      <a href="#" onclick="showSection('rppm',this)">RPPM Sentra KB</a>
+      <a href="#" onclick="showSection('modul-ajar-persiapan',this)">Modul Ajar S.Persiapan</a>
+      <a href="#" onclick="showSection('modul-ajar-balok',this)">Modul Ajar S.Balok</a>
+      <a href="#" onclick="showSection('modul-ajar-seni',this)">Modul Ajar S.Seni</a>
+      <a href="#" onclick="showSection('modul-ajar-alam',this)">Modul Ajar S.Alam</a>
+      <a href="#" onclick="showSection('modul-ajar-peran',this)">Modul Ajar S.Peran</a>
+    </div>
+    <div class="sidebar-toggle" onclick="this.classList.toggle('open')">KB &mdash; Semester 2</div>
+    <div class="sidebar-group">
+      <a href="#" onclick="showSection('rppm-s2',this)">RPPM Sentra KB</a>
+      <a href="#" onclick="showSection('modul-ajar-persiapan-s2',this)">Modul Ajar S.Persiapan</a>
+      <a href="#" onclick="showSection('modul-ajar-balok-s2',this)">Modul Ajar S.Balok</a>
+      <a href="#" onclick="showSection('modul-ajar-seni-s2',this)">Modul Ajar S.Seni</a>
+      <a href="#" onclick="showSection('modul-ajar-alam-s2',this)">Modul Ajar S.Alam</a>
+      <a href="#" onclick="showSection('modul-ajar-peran-s2',this)">Modul Ajar S.Peran</a>
+    </div>
+    <div class="sidebar-toggle" onclick="this.classList.toggle('open')">TK A &mdash; Kalender</div>
+    <div class="sidebar-group">
+      <a href="#" onclick="showSection('tka-kalender-sentra',this)">Kalender Sentra TK A</a>
+    </div>
+    <div class="sidebar-toggle" onclick="this.classList.toggle('open')">TK A &mdash; Semester 1</div>
+    <div class="sidebar-group">
+      <a href="#" onclick="showSection('tka-rppm',this)">RPPM Sentra TK A</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-persiapan',this)">Modul Ajar S.Persiapan</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-alam',this)">Modul Ajar S.Alam</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-peran',this)">Modul Ajar S.Peran</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-seni',this)">Modul Ajar S.Seni</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-balok',this)">Modul Ajar S.Balok</a>
+    </div>
+    <div class="sidebar-toggle" onclick="this.classList.toggle('open')">TK A &mdash; Semester 2</div>
+    <div class="sidebar-group">
+      <a href="#" onclick="showSection('tka-rppm-s2',this)">RPPM Sentra TK A</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-persiapan-s2',this)">Modul Ajar S.Persiapan</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-alam-s2',this)">Modul Ajar S.Alam</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-peran-s2',this)">Modul Ajar S.Peran</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-seni-s2',this)">Modul Ajar S.Seni</a>
+      <a href="#" onclick="showSection('tka-modul-ajar-balok-s2',this)">Modul Ajar S.Balok</a>
+    </div>
     <div class="sidebar-subgroup">Dokumen Lain</div>
     <a href="#" onclick="showSection('proposal',this)">Proposal Perubahan TWKA</a>
   </div>
@@ -35365,6 +35383,11 @@ function showSection(id, el) {
   else {
     var link = document.querySelector('.sidebar a[onclick*="' + id + '"]');
     if (link) link.classList.add('active');
+  }
+  var activeLink = el || document.querySelector('.sidebar a[onclick*="' + id + '"]');
+  if (activeLink) {
+    var grp = activeLink.closest('.sidebar-group');
+    if (grp) { var tog = grp.previousElementSibling; if (tog && tog.classList.contains('sidebar-toggle')) tog.classList.add('open'); }
   }
   window.scrollTo({top:0,behavior:'smooth'});
   if (window.innerWidth <= 768) {
