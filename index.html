@@ -184,9 +184,11 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 /* MOBILE */
 @media(max-width:768px){
   .layout{flex-direction:column}
-  .sidebar{width:100%;min-height:auto;height:auto;position:static;display:none}
-  .sidebar.open{display:block}
-  .sidebar.hidden{width:100%;display:none}
+  .sidebar{width:280px;position:fixed;top:60px;left:0;bottom:0;height:calc(100vh - 60px);overflow-y:auto;z-index:999;transform:translateX(-100%);transition:transform .25s ease;display:block}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar.hidden{transform:translateX(-100%)}
+  .sidebar-backdrop{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:998}
+  .sidebar-backdrop.open{display:block}
   .sidebar-collapse{display:none}
   .hamburger{display:flex}
   .main{padding:16px}
@@ -287,6 +289,7 @@ h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
 </header>
 
 <div class="layout">
+<div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleSidebar()"></div>
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-section">
     <div class="sidebar-section-title">KB-TK Erenos</div>
@@ -43286,6 +43289,8 @@ function showSection(id, el) {
   window.scrollTo({top:0,behavior:'smooth'});
   if (window.innerWidth <= 768) {
     document.getElementById('sidebar').classList.remove('open');
+    var bd = document.getElementById('sidebar-backdrop');
+    if (bd) bd.classList.remove('open');
   }
   history.replaceState(null, '', '#' + id);
   return false;
@@ -43293,9 +43298,11 @@ function showSection(id, el) {
 
 function toggleSidebar() {
   var sb = document.getElementById('sidebar');
+  var bd = document.getElementById('sidebar-backdrop');
   if (window.innerWidth <= 768) {
     sb.classList.toggle('open');
     sb.classList.remove('hidden');
+    if (bd) bd.classList.toggle('open', sb.classList.contains('open'));
   } else {
     sb.classList.toggle('hidden');
   }
