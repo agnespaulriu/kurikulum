@@ -43292,7 +43292,7 @@ function showSection(id, el) {
     var bd = document.getElementById('sidebar-backdrop');
     if (bd) bd.classList.remove('open');
   }
-  history.replaceState(null, '', '#' + id);
+  history.replaceState(null, '', location.pathname + location.search);
   return false;
 }
 
